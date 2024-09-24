@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,55 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+}
+
+.Projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ProjectCard {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+}
+
+.Navbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+.Navbar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Navbar li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.Footer {
+  background-color: #282c34;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

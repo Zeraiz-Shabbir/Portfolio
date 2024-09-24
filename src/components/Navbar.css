@@ -1,0 +1,44 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 15px 30px;
+}
+
+.Navbar-title {
+  margin: 0;
+}
+
+.Navbar-link {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.Navbar-link:hover {
+  color: #cdcec0; /* Change color on hover */
+}
+
+.Navbar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.Navbar li {
+  margin-left: 20px;
+}
+
+.Navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.Navbar a:hover {
+  color: #cdcec0; /* Change color on hover */
+}

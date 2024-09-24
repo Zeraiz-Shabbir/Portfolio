@@ -1,0 +1,46 @@
+.LandingPage {
+    text-align: center;
+    padding: 50px;
+    background: radial-gradient(circle, rgba(205, 206, 192, 0.8), rgba(168, 192, 255, 0.6)); /* Subtle radial gradient */
+    color: #333; /* Text color */
+    min-height: 100vh; /* Full height */
+    position: relative; /* For positioning graphics */
+    overflow: hidden; /* Hide overflow for any graphics */
+  }
+  
+  .Landing-image {
+    width: 300px; /* Make the image bigger */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 0; /* Remove circular styling */
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+  }
+  
+  .Landing-buttons {
+    margin-top: 20px;
+  }
+  
+  .Landing-button {
+    margin: 0 15px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .Landing-button:hover {
+    background-color: #0056b3; /* Darker on hover */
+  }
+  
+  /* Additional styles for graphics */
+  .ComputerGraphics {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.1; /* Make graphics subtle */
+    width: 400px; /* Adjust size as needed */
+  }
+  
