@@ -3,12 +3,13 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import Projects from './components/Projects';
 import AboutMe from './components/AboutMe';
-import NavigationCircles from './components/NavigationCircles'; // Import NavigationCircles
+import NavigationCircles from './components/NavigationCircles';
 import './App.css'; // Import CSS for snap scrolling
 
 const App = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState('landing-page'); // State for active section
+  const [isVisible, setIsVisible] = useState(false); // State to toggle navbar visibility
+  const [activeSection, setActiveSection] = useState('landing-page'); // State for the active section
+  const [isProjectOpen, setIsProjectOpen] = useState(false); // State for project open/close
   const scrollRef = useRef(null); // Reference to the scrolling container
   const sectionsRef = useRef({}); // Ref to hold references to sections
 
@@ -42,24 +43,40 @@ const App = () => {
     const target = document.getElementById(targetId);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // No need to setActiveSection here; it will be updated by the observer
     }
   };
 
+  useEffect(() => {
+    if (isProjectOpen) {
+      document.body.style.overflow = 'hidden'; // Disable scrolling when a project is open
+    } else {
+      document.body.style.overflow = ''; // Enable scrolling when no project is open
+    }
+  }, [isProjectOpen]);
+
   return (
     <div className="App" ref={scrollRef}>
-      <Navbar
-        isVisible={isVisible}
-        onMouseEnter={() => setIsVisible(true)}
-        onMouseLeave={() => setIsVisible(false)}
-        onNavigate={handleNavigate} // Pass the handleNavigate to Navbar
-      />
-      <NavigationCircles onNavigate={handleNavigate} activeSection={activeSection} /> {/* Include NavigationCircles */}
+      {/* Conditionally render Navbar and NavigationCircles based on whether a project is open */}
+      {!isProjectOpen && (
+        <>
+          <Navbar
+            isVisible={isVisible}
+            onMouseEnter={() => setIsVisible(true)}
+            onMouseLeave={() => setIsVisible(false)}
+            onNavigate={handleNavigate} // Pass handleNavigate to Navbar
+          />
+          <NavigationCircles
+            onNavigate={handleNavigate}
+            activeSection={activeSection}
+          />
+        </>
+      )}
+      {/* Sections */}
       <div ref={(el) => (sectionsRef.current['landing-page'] = el)} id="landing-page">
         <LandingPage />
       </div>
       <div ref={(el) => (sectionsRef.current['featured-projects'] = el)} id="featured-projects">
-        <Projects />
+        <Projects onOpenProject={setIsProjectOpen} /> {/* Pass setIsProjectOpen to Projects */}
       </div>
       <div ref={(el) => (sectionsRef.current['about-me'] = el)} id="about-me">
         <AboutMe />

@@ -48,24 +48,29 @@
 
 /* Project Item (Individual Project) Styling */
 .project-item {
-  background-color: #f0f0f0; /* Background color of project rectangles */
-  padding: 40px 20px; /* Adjusted padding for a playing card look */
-  border-radius: 10px; /* Rounded corners */
-  min-width: 250px; /* Adjust width */
-  height: 350px; /* Adjust height */
-  text-align: center; /* Center text */
+  background-color: transparent; /* Make background transparent */
+  width: 250px; /* Fixed width */
+  height: 350px; /* Fixed height */
+  overflow: hidden; /* Hide overflow to prevent image from affecting card size */
+  border-radius: 10px; /* Rounded corners for aesthetics */
   cursor: pointer; /* Pointer cursor on hover */
-  display: flex; /* Flexbox for centering */
-  flex-direction: column; /* Column layout for content */
-  justify-content: center; /* Center content vertically */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover and shadow effect */
+  position: relative; /* Relative positioning for layering */
+  transition: transform 0.3s ease; /* Smooth hover */
   scroll-snap-align: center; /* Center alignment for snap effect */
+}
+
+/* Image Styling */
+.project-image {
+  width: 100%; /* Make the image take up the full width of the card */
+  height: 100%; /* Make the image take up the full height of the card */
+  object-fit: cover; /* Ensure the image covers the area without distortion */
+  border-radius: 10px; /* Rounded corners to match the card */
 }
 
 /* Hover Effect for Project Items */
 .project-item:hover {
   transform: translateY(-10px); /* Vertical lift on hover */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); Add shadow on hover */
   animation: float 1.5s ease-in-out infinite; /* Add floating hover animation */
 }
 

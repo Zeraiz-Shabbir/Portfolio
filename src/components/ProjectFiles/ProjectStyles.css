@@ -1,26 +1,31 @@
 /* src/components/ProjectStyles.css */
 
-.project-container {
-    background-color: white; /* Background color for the project details */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Inner padding */
-    max-width: 600px; /* Max width of the modal */
-    width: 100%; /* Full width */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-    position: relative; /* For positioning the back button */
-  }
-  
-  .back-button {
-    background-color: #007bff; /* Button color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor for button */
-    margin-bottom: 20px; /* Space below the button */
-    padding: 10px 20px; /* Button padding */
-  }
-  
-  .back-button:hover {
-    background-color: #0056b3; /* Darker button color on hover */
-  }
-  
+/* Ensure the project page fully takes up the screen with a white background */
+.project-page {
+  color: white; /* Solid white background */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fix it to the viewport */
+  top: 0;
+  left: 0;
+  z-index: 9999; /* Ensure it's above other content */
+  display: flex; /* Flex layout */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+/* Back button styles */
+.back-button {
+  position: absolute;
+  top: 40px;
+  left: 130px;
+  background-color: white; /* No background */
+  cursor: pointer;
+  font-size: 32px; /* Large size for the arrow */
+  color: black; /* Arrow color */
+}
+
+/* Disable arrow key navigation while on the project page */
+body.no-scroll {
+  overflow: hidden;
+}

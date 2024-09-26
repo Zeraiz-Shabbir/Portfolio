@@ -8,9 +8,7 @@ const Project1 = ({ onClose }) => {
       <button className="back-button" onClick={onClose}>
         Back
       </button>
-      <h2>Project 1: Awesome App</h2>
-      <p>This is the detailed description of Project 1.</p>
-      <p>Here you can add more details, images, or any other content.</p>
+      <h2>Project 1</h2>
     </div>
   );
 };
