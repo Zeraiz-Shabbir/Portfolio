@@ -1,17 +1,38 @@
 import React from 'react';
 import './LandingPage.css';
-import profileImage from '../assets/headshot.jpeg'; // Fixed the missing closing quote
+import profilePic from '../assets/cali_pic.jpg';
 
 const LandingPage = () => {
+  const handleEmail = () => {
+    window.open('mailto:zeraiz.shabbir@gmail.com', '_blank');
+  };
+
+  const handleGitHub = () => {
+    window.open('https://github.com/Zeraiz-Shabbir', '_blank');
+  };
+
+  const handleLinkedIn = () => {
+    window.open('https://www.linkedin.com/in/zeraiz-shabbir/', '_blank');
+  };
+
   return (
-    <div className="LandingPage">
-      <img src={profileImage} alt="Zeraiz Shabbir" className="Landing-image" />
-      <h1>Hello, I am Zeraiz Shabbir</h1>
-      <div className="Landing-buttons">
-        <a href="#about-me" className="Landing-button">About Me</a>
-        <a href="#contact" className="Landing-button">Contact Me</a>
+    <section id="landing-page" className="landing-page" data-scroll-section>
+      <div className="content-wrapper">
+        <div className="text-section">
+          <h1>Hi,</h1>
+          <h1>I'm Zeraiz Shabbir</h1>
+          <p>an aspiring Frontend Developer</p>
+          <div className="social-links">
+            <button onClick={handleEmail}>Email</button>
+            <button onClick={handleGitHub}>GitHub</button>
+            <button onClick={handleLinkedIn}>LinkedIn</button>
+          </div>
+        </div>
+        <div className="image-section">
+          <img src={profilePic} alt="Zeraiz Shabbir" />
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

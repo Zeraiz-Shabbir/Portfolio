@@ -1,0 +1,45 @@
+.nav-circles {
+  position: fixed; /* Keep circles fixed in position */
+  top: 50%; /* Center vertically */
+  left: 20px; /* Position from the left */
+  transform: translateY(-50%); /* Adjust for centering */
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between circles */
+  z-index: 1000; /* Ensure they stay above other content */
+}
+
+.circle {
+  width: 20px; /* Smaller width */
+  height: 20px; /* Smaller height */
+  border-radius: 50%; /* Make it circular */
+  background-color: rgba(128, 128, 128, 0.5); /* Opaque gray */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth color change on hover */
+  position: relative; /* Needed for absolute positioning of tooltip */
+}
+
+.circle:hover {
+  background-color: rgba(128, 128, 128, 0.8); /* Darker gray on hover */
+}
+
+.tooltip {
+  display: none; /* Hide tooltip by default */
+  position: absolute;
+  left: 30px; /* Space next to the circle */
+  top: 50%; /* Center vertically */
+  transform: translateY(-50%); /* Adjust for centering */
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background for tooltip */
+  color: white; /* White text for readability */
+  padding: 5px 10px; /* Padding for tooltip */
+  border-radius: 5px; /* Slight rounding */
+  font-size: 0.8em; /* Smaller font size */
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
+}
+
+.circle:hover .tooltip {
+  display: block; /* Show tooltip on hover */
+}

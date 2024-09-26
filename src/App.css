@@ -1,72 +1,38 @@
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
 .App {
   text-align: center;
   font-family: Arial, sans-serif;
+  /* overflow: hidden; Prevent scrolling by default */
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  height: 100vh; /* Full height for the app container */
+  scroll-snap-type: y mandatory; /* Enable snap scrolling */
 }
 
-.App-header {
-  background-color: #282c34;
-  padding: 20px;
-  color: white;
-}
-
-.Projects {
+.LandingPage,
+.Projects,
+.AboutMe {
+  height: 100vh; /* Full height for each section */
+  scroll-snap-align: start; /* Snap alignment for sections */
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  padding: 20px;
+  align-items: center; /* Center content vertically */
 }
 
-.ProjectCard {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 10px;
-  padding: 20px;
-  width: 300px;
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5; /* Light neutral background */
+  color: #333333; /* Dark gray text */
+  overflow: auto
 }
 
 .Navbar {
   background-color: #333;
   color: white;
   padding: 10px;
+  position: fixed; /* Keep the navbar at the top */
+  width: 100%; /* Full width */
+  z-index: 1000; /* Ensure it sits above other content */
 }
 
 .Navbar ul {
@@ -86,4 +52,27 @@
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.Projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ProjectCard {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 20px;
+  width: 300px;
+}
+
+* {
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
 }

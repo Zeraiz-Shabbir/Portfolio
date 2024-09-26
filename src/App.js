@@ -1,62 +1,35 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-import './App.css';
+import React, { useState, useRef } from 'react';
 import Navbar from './components/Navbar';
-import ProjectCard from './components/ProjectCard';
-import Footer from './components/Footer';
 import LandingPage from './components/LandingPage';
+import Projects from './components/Projects';
+import AboutMe from './components/AboutMe';
+import NavigationCircles from './components/NavigationCircles'; // Import NavigationCircles
+import './App.css'; // Import CSS for snap scrolling
 
-const projects = [
-  {
-    title: "Project One",
-    description: "Description of project one.",
-    link: "https://github.com/user/project-one",
-  },
-  {
-    title: "Project Two",
-    description: "Description of project two.",
-    link: "https://github.com/user/project-two",
-  },
-  // Add more projects here
-];
+const App = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const scrollRef = useRef(null); // Reference to the scrolling container
 
-function App() {
+  const handleNavigate = (targetId) => {
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
-    <div className="App">
-      <Navbar />
+    <div className="App" ref={scrollRef}>
+      <Navbar
+        isVisible={isVisible}
+        onMouseEnter={() => setIsVisible(true)}
+        onMouseLeave={() => setIsVisible(false)}
+      />
+      <NavigationCircles onNavigate={handleNavigate} /> {/* Include NavigationCircles */}
       <LandingPage />
-      <main className="Projects" id="projects"> {/* Add an ID for linking */}
-        {projects.map((project, index) => (
-          <ProjectCard key={index} project={project} />
-        ))}
-      </main>
-      <Footer />
+      <Projects />
+      <AboutMe />
     </div>
   );
-}
+};
 
 export default App;

@@ -1,0 +1,79 @@
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  margin: 0 10%; /* Match the landing page margin */
+  height: 100vh; /* Full height */
+  position: relative; /* Relative positioning for absolute button placement */
+  scroll-snap-align: start; /* Snap alignment for this section */
+}
+
+.empty-space {
+  height: 50vh; /* Empty space takes half the height of the viewport */
+  width: 100%; /* Full width */
+}
+
+.projects-title {
+  margin: 20px 0; /* Space from the top and bottom */
+  font-size: 24px; /* Adjust font size as needed */
+  font-weight: bold; /* Make it bold for emphasis */
+  align-self: flex-start; /* Align to the top left */
+}
+
+.projects-wrapper {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  align-items: center; /* Center projects vertically */
+  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-y: hidden; /* Hide vertical scroll */
+  width: 100%;
+  padding: 20px 0; /* Padding to space out content */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  flex: 1; /* Allow this section to grow and take available space */
+}
+
+.projects-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  gap: 20px; /* Space between project items */
+  min-height: 200px; /* Ensure some height for visibility */
+  padding-left: 10px; /* Slight padding to avoid project overlap */
+  scroll-snap-type: x mandatory; /* Enable snap scrolling */
+  scroll-snap-align: start; /* Align each project at the start */
+}
+
+.project-item {
+  background-color: #f0f0f0; /* Background color of project rectangles */
+  padding: 20px; /* Padding inside each rectangle */
+  border-radius: 10px; /* Rounded corners */
+  min-width: 200px; /* Minimum width for each project */
+  text-align: center; /* Center text */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.3s; /* Smooth hover effect */
+  display: flex; /* Use flexbox for centering */
+  flex-direction: column; /* Column layout for content */
+  justify-content: center; /* Center content vertically */
+  scroll-snap-align: center; /* Center alignment for snap effect */
+}
+
+.project-item:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.project-details-overlay {
+  position: fixed; /* Overlay on top of everything */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Dark background with transparency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10; /* Ensure overlay is on top */
+  padding: 20px; /* Padding inside overlay */
+}

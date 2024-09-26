@@ -1,46 +1,70 @@
-.LandingPage {
-    text-align: center;
-    padding: 50px;
-    background: radial-gradient(circle, rgba(205, 206, 192, 0.8), rgba(168, 192, 255, 0.6)); /* Subtle radial gradient */
-    color: #333; /* Text color */
-    min-height: 100vh; /* Full height */
-    position: relative; /* For positioning graphics */
-    overflow: hidden; /* Hide overflow for any graphics */
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full height for the landing page */
+  padding: 0 10%; /* Horizontal padding */
+  scroll-snap-align: start; /* Ensure snap alignment */
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%; /* Full width for the content wrapper */
+}
+
+.text-section {
+  flex: 1; /* Allow text section to take up space */
+  text-align: left; /* Align text to the left */
+  padding: 0 20px; /* Padding on the sides */
+}
+
+.image-section {
+  flex: 1; /* Allow image section to take up space */
+  display: flex;
+  justify-content: center; /* Center the image */
+}
+
+.image-section img {
+  width: 100%; /* Responsive width */
+  max-width: 400px; /* Maximum width for larger screens */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.social-links {
+  display: flex; /* Flex layout for social buttons */
+  gap: 10px; /* Space between buttons */
+}
+
+.social-links button {
+  padding: 10px 20px; /* Button padding */
+  cursor: pointer; /* Pointer on hover */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #007bff; /* Button color */
+  color: white; /* Text color */
+  transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.social-links button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column; /* Stack elements on smaller screens */
+    text-align: center; /* Center text on small screens */
   }
-  
-  .Landing-image {
-    width: 300px; /* Make the image bigger */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 0; /* Remove circular styling */
-    margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+
+  .text-section, .image-section {
+    flex: none; /* Remove flex growth */
+    max-width: 100%; /* Allow full width on small screens */
   }
-  
-  .Landing-buttons {
-    margin-top: 20px;
+
+  .image-section img {
+    max-width: 300px; /* Limit image size on small screens */
   }
-  
-  .Landing-button {
-    margin: 0 15px;
-    padding: 10px 20px;
-    background-color: #007bff; /* Button color */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .Landing-button:hover {
-    background-color: #0056b3; /* Darker on hover */
-  }
-  
-  /* Additional styles for graphics */
-  .ComputerGraphics {
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.1; /* Make graphics subtle */
-    width: 400px; /* Adjust size as needed */
-  }
-  
+}

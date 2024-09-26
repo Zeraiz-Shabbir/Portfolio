@@ -2,23 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #333;
-  color: white;
+  background-color: #FFFFFF !important; /* Ensure it's white and overrides other styles */
   padding: 15px 30px;
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s; /* Smooth transition for fading */
+  position: fixed; /* Fix navbar at the top */
+  width: 90%; /* Full width */
+  top: 0; /* Align to the top */
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.Navbar.visible {
+  opacity: 1; /* Show when visible */
 }
 
 .Navbar-title {
   margin: 0;
-}
-
-.Navbar-link {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.Navbar-link:hover {
-  color: #cdcec0; /* Change color on hover */
+  color: #000000; /* Color of Zeraiz Shabbir text */
 }
 
 .Navbar-menu {
@@ -32,13 +32,19 @@
   margin-left: 20px;
 }
 
+/* Add margin to the last li for equal spacing */
+.Navbar li:last-child {
+  margin-right: 30px; /* Adjust this value to match the left margin */
+}
+
 .Navbar a {
-  color: white;
-  text-decoration: none;
+  color: #000000; /* Dark gray for links */
+  text-decoration: none; /* No underline by default */
   font-weight: bold;
-  transition: color 0.3s;
+  transition: text-decoration 0.3s, color 0.3s; /* Smooth transition for underline and color */
 }
 
 .Navbar a:hover {
-  color: #cdcec0; /* Change color on hover */
+  text-decoration: underline; /* Underline on hover for clarity */
+  color: #007bff; /* Optional: Change color on hover for emphasis */
 }
