@@ -1,3 +1,4 @@
+/* Projects Section Styling */
 .projects-section {
   display: flex;
   flex-direction: column;
@@ -8,11 +9,7 @@
   scroll-snap-align: start; /* Snap alignment for this section */
 }
 
-.empty-space {
-  height: 50vh; /* Empty space takes half the height of the viewport */
-  width: 100%; /* Full width */
-}
-
+/* Project Section Title */
 .projects-title {
   margin: 20px 0; /* Space from the top and bottom */
   font-size: 24px; /* Adjust font size as needed */
@@ -20,6 +17,7 @@
   align-self: flex-start; /* Align to the top left */
 }
 
+/* Wrapper for Projects List */
 .projects-wrapper {
   display: flex;
   justify-content: flex-start; /* Align to the left */
@@ -32,10 +30,12 @@
   flex: 1; /* Allow this section to grow and take available space */
 }
 
+/* Hide Scrollbar for Webkit Browsers */
 .projects-wrapper::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari, and Edge */
 }
 
+/* Projects List Styling */
 .projects-list {
   display: flex;
   flex-direction: row; /* Horizontal layout */
@@ -46,24 +46,40 @@
   scroll-snap-align: start; /* Align each project at the start */
 }
 
+/* Project Item (Individual Project) Styling */
 .project-item {
   background-color: #f0f0f0; /* Background color of project rectangles */
-  padding: 20px; /* Padding inside each rectangle */
+  padding: 40px 20px; /* Adjusted padding for a playing card look */
   border-radius: 10px; /* Rounded corners */
-  min-width: 200px; /* Minimum width for each project */
+  min-width: 250px; /* Adjust width */
+  height: 350px; /* Adjust height */
   text-align: center; /* Center text */
   cursor: pointer; /* Pointer cursor on hover */
-  transition: transform 0.3s; /* Smooth hover effect */
-  display: flex; /* Use flexbox for centering */
+  display: flex; /* Flexbox for centering */
   flex-direction: column; /* Column layout for content */
   justify-content: center; /* Center content vertically */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover and shadow effect */
   scroll-snap-align: center; /* Center alignment for snap effect */
 }
 
+/* Hover Effect for Project Items */
 .project-item:hover {
-  transform: scale(1.05); /* Scale effect on hover */
+  transform: translateY(-10px); /* Vertical lift on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  animation: float 1.5s ease-in-out infinite; /* Add floating hover animation */
 }
 
+/* Floating Animation for Hover Effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0); /* At the start and end, no movement */
+  }
+  50% {
+    transform: translateY(-10px); /* Move up by 10px mid-animation */
+  }
+}
+
+/* Overlay for Project Details */
 .project-details-overlay {
   position: fixed; /* Overlay on top of everything */
   top: 0;

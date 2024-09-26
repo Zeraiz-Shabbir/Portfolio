@@ -43,3 +43,8 @@
 .circle:hover .tooltip {
   display: block; /* Show tooltip on hover */
 }
+
+/* Active Circle Style */
+.circle.active {
+  background-color: rgba(128, 128, 128, 1); /* Fully opaque dark gray for active */
+}

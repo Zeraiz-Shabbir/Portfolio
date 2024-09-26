@@ -23,7 +23,7 @@ const Projects = () => {
 
   return (
     <section id="featured-projects" className="projects-section" data-scroll-section>
-      <h2>Featured Projects</h2>
+      {/* <h2>Featured Projects</h2> */}
       <div className="projects-wrapper">
         <div className="projects-list">
           {projects.map((project, index) => (
