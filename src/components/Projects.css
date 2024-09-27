@@ -67,23 +67,6 @@
   border-radius: 10px; /* Rounded corners to match the card */
 }
 
-/* Hover Effect for Project Items */
-.project-item:hover {
-  transform: translateY(-10px); /* Vertical lift on hover */
-  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); Add shadow on hover */
-  animation: float 1.5s ease-in-out infinite; /* Add floating hover animation */
-}
-
-/* Floating Animation for Hover Effect */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0); /* At the start and end, no movement */
-  }
-  50% {
-    transform: translateY(-10px); /* Move up by 10px mid-animation */
-  }
-}
-
 /* Overlay for Project Details */
 .project-details-overlay {
   position: fixed; /* Overlay on top of everything */

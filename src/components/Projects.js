@@ -13,6 +13,7 @@ import Project5 from './ProjectFiles/Project5';
 
 const Projects = ({ onOpenProject }) => {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [translateY, setTranslateY] = useState([0, 0, 0, 0, 0]); // Array to track Y position of each card
 
   const projects = [
     {
@@ -37,6 +38,22 @@ const Projects = ({ onOpenProject }) => {
     },
   ];
 
+  const handleMouseEnter = (index) => {
+    setTranslateY(prev => {
+      const newTranslateY = [...prev];
+      newTranslateY[index] = -50; // Lift the hovered card higher
+      return newTranslateY;
+    });
+  };
+
+  const handleMouseLeave = (index) => {
+    setTranslateY(prev => {
+      const newTranslateY = [...prev];
+      newTranslateY[index] = 0; // Reset to original position
+      return newTranslateY;
+    });
+  };
+
   const handleProjectClick = (component) => {
     setSelectedProject(component);
     onOpenProject(true); // Notify parent to hide nav elements
@@ -59,10 +76,15 @@ const Projects = ({ onOpenProject }) => {
             <div 
               key={index} 
               className="project-item" 
+              onMouseEnter={() => handleMouseEnter(index)} 
+              onMouseLeave={() => handleMouseLeave(index)} 
               onClick={() => handleProjectClick(project.component)}
+              style={{ 
+                transform: `translateY(${translateY[index]}px) scale(${translateY[index] < 0 ? 1.15 : 1})`, // Combine translation and scale
+                transition: 'transform 0.3s ease' 
+              }} // Apply dynamic translateY for each card
             >
-              <img src={project.image} alt={project.title} className="project-image" />
-              {project.title}
+              <img src={project.image} alt={`Project ${index + 1}`} className="project-image" />
             </div>
           ))}
         </div>
