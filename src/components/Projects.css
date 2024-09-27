@@ -25,7 +25,7 @@
   overflow-x: auto; /* Allow horizontal scrolling */
   overflow-y: hidden; /* Hide vertical scroll */
   width: 100%;
-  padding: 20px 0; /* Padding to space out content */
+  /* padding: 20px 0; Padding to space out content */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
   flex: 1; /* Allow this section to grow and take available space */
 }
@@ -41,7 +41,7 @@
   flex-direction: row; /* Horizontal layout */
   gap: 20px; /* Space between project items */
   min-height: 200px; /* Ensure some height for visibility */
-  padding-left: 10px; /* Slight padding to avoid project overlap */
+  /* padding-left: 10px; Slight padding to avoid project overlap */
   scroll-snap-type: x mandatory; /* Enable snap scrolling */
   scroll-snap-align: start; /* Align each project at the start */
 }
@@ -79,5 +79,5 @@
   align-items: center;
   justify-content: center;
   z-index: 10; /* Ensure overlay is on top */
-  padding: 20px; /* Padding inside overlay */
+  /* padding: 20px; Padding inside overlay */
 }

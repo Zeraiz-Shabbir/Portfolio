@@ -80,7 +80,7 @@ const Projects = ({ onOpenProject }) => {
               onMouseLeave={() => handleMouseLeave(index)} 
               onClick={() => handleProjectClick(project.component)}
               style={{ 
-                transform: `translateY(${translateY[index]}px) scale(${translateY[index] < 0 ? 1.15 : 1})`, // Combine translation and scale
+                transform: `translateY(${translateY[index]}px) scale(${translateY[index] < 0 ? 1.12 : 1})`, // Combine translation and scale
                 transition: 'transform 0.3s ease' 
               }} // Apply dynamic translateY for each card
             >
