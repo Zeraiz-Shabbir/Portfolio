@@ -3,68 +3,126 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* Full height for the landing page */
-  padding: 0 10%; /* Horizontal padding */
-  scroll-snap-align: start; /* Ensure snap alignment */
+  height: 100vh;
+  padding: 0 10%;
+  scroll-snap-align: start;
 }
 
 .content-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%; /* Full width for the content wrapper */
+  width: 100%;
 }
 
 .text-section {
-  flex: 1; /* Allow text section to take up space */
-  text-align: left; /* Align text to the left */
-  padding: 0 20px; /* Padding on the sides */
+  flex: 1;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.greeting {
+  font-size: 1.5em; /* Adjust the size as needed */
+  margin: 0; /* Remove default margin */
+}
+
+.name {
+  font-size: 2.5em; /* Slightly larger size */
+  margin: 0; /* Remove default margin */
+}
+
+.description {
+  font-size: 1.2em; /* Normal text size */
+  margin-top: 10px; /* Space between the name and description */
 }
 
 .image-section {
-  flex: 1; /* Allow image section to take up space */
+  flex: 1;
   display: flex;
-  justify-content: center; /* Center the image */
+  justify-content: center;
 }
 
 .image-section img {
-  width: 100%; /* Responsive width */
-  max-width: 400px; /* Maximum width for larger screens */
-  height: auto; /* Maintain aspect ratio */
+  width: 100%;
+  max-width: 400px;
+  height: auto;
 }
 
 .social-links {
-  display: flex; /* Flex layout for social buttons */
-  gap: 10px; /* Space between buttons */
+  display: flex;
+  gap: 20px; /* Increase spacing between icons */
 }
 
-.social-links button {
-  padding: 10px 20px; /* Button padding */
-  cursor: pointer; /* Pointer on hover */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  background-color: #007bff; /* Button color */
-  color: white; /* Text color */
-  transition: background-color 0.3s; /* Smooth background color transition */
+.icon-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1; /* Ensure the icon and its wrapper stay above the circle */
 }
 
-.social-links button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+.icon-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: black;
+  border-radius: 50%;
+  z-index: -1; /* Ensures the circle stays behind the icon */
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* Quicker transition */
+}
+
+.icon-wrapper:hover::before {
+  width: 60px;
+  height: 60px;
+  animation: bounce 0.5s ease forwards; /* Add bounce animation */
+}
+
+.icon-wrapper:hover .icon {
+  color: white; /* Change icon color to white on hover */
+}
+
+.icon {
+  font-size: 30px;
+  color: black; /* Default icon color */
+  transition: color 0.3s ease; /* Keep color change slower */
+  z-index: 2; /* Ensures the icon stays on top of the growing circle */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Scale up slightly */
+  }
+  100% {
+    transform: scale(1); /* Return to original size */
+  }
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .content-wrapper {
-    flex-direction: column; /* Stack elements on smaller screens */
-    text-align: center; /* Center text on small screens */
+    flex-direction: column;
+    text-align: center;
   }
 
-  .text-section, .image-section {
-    flex: none; /* Remove flex growth */
-    max-width: 100%; /* Allow full width on small screens */
+  .text-section,
+  .image-section {
+    flex: none;
+    max-width: 100%;
   }
 
   .image-section img {
-    max-width: 300px; /* Limit image size on small screens */
+    max-width: 300px;
   }
+}
+
+.highlight {
+  color: rgb(71, 203, 255) /* Change to your desired color */
 }

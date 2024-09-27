@@ -32,11 +32,6 @@
   margin-left: 20px;
 }
 
-/* Add margin to the last li for equal spacing */
-.Navbar li:last-child {
-  margin-right: 30px; /* Adjust this value to match the left margin */
-}
-
 .Navbar a {
   color: #000000; /* Dark gray for links */
   text-decoration: none; /* No underline by default */

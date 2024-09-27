@@ -19,8 +19,26 @@ const Navbar = ({ isVisible, onMouseEnter, onMouseLeave }) => {
     >
       <h2 className="Navbar-title">Zeraiz Shabbir</h2>
       <ul className="Navbar-menu">
-        <li><a href="#featured-projects" onClick={(e) => handleSmoothScroll(e, 'featured-projects')}>Portfolio</a></li>
-        <li><a href="#about-me" onClick={(e) => handleSmoothScroll(e, 'about-me')}>About Me</a></li>
+        <li>
+          <a 
+            href="#featured-projects" 
+            onClick={(e) => handleSmoothScroll(e, 'featured-projects')} 
+            className="NavLink"
+          >
+            Portfolio
+          </a>
+          <div className="UnfoldingLine"></div>
+        </li>
+        <li>
+          <a 
+            href="#about-me" 
+            onClick={(e) => handleSmoothScroll(e, 'about-me')} 
+            className="NavLink"
+          >
+            About Me
+          </a>
+          <div className="UnfoldingLine"></div>
+        </li>
       </ul>
     </nav>
   );

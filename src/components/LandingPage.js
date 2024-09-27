@@ -1,6 +1,8 @@
 import React from 'react';
 import './LandingPage.css';
 import profilePic from '../assets/cali_pic.jpg';
+// Importing FontAwesome icons
+import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const LandingPage = () => {
   const handleEmail = () => {
@@ -19,13 +21,21 @@ const LandingPage = () => {
     <section id="landing-page" className="landing-page" data-scroll-section>
       <div className="content-wrapper">
         <div className="text-section">
-          <h1>Hi,</h1>
-          <h1>I'm Zeraiz Shabbir</h1>
-          <p>an aspiring Frontend Developer</p>
+          <h1 className="greeting">Hi</h1>
+          <h1 className="name">I'm <span className="highlight">Zeraiz Shabbir</span></h1> {/* Change here */}
+          <p className="description">
+            an aspiring frontend developer passionate about creating intuitive and dynamic user experiences.
+          </p>
           <div className="social-links">
-            <button onClick={handleEmail}>Email</button>
-            <button onClick={handleGitHub}>GitHub</button>
-            <button onClick={handleLinkedIn}>LinkedIn</button>
+            <div className="icon-wrapper" onClick={handleEmail}>
+              <FaEnvelope className="icon" />
+            </div>
+            <div className="icon-wrapper" onClick={handleGitHub}>
+              <FaGithub className="icon" />
+            </div>
+            <div className="icon-wrapper" onClick={handleLinkedIn}>
+              <FaLinkedin className="icon" />
+            </div>
           </div>
         </div>
         <div className="image-section">
