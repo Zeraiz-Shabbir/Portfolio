@@ -69,7 +69,7 @@
   position: absolute;
   width: 0;
   height: 0;
-  background-color: black;
+  background-color: var(--secondary-color);
   border-radius: 50%;
   z-index: -1; /* Ensures the circle stays behind the icon */
   transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* Quicker transition */
@@ -82,14 +82,18 @@
 }
 
 .icon-wrapper:hover .icon {
-  color: white; /* Change icon color to white on hover */
+  color: var(--primary-color); /* Change icon color to white on hover */
 }
 
 .icon {
   font-size: 30px;
-  color: black; /* Default icon color */
+  color: var(--secondary-color); /* Default icon color */
   transition: color 0.3s ease; /* Keep color change slower */
   z-index: 2; /* Ensures the icon stays on top of the growing circle */
+}
+
+.highlight {
+  color: var(--accent-color);
 }
 
 /* Bounce animation */
@@ -121,8 +125,4 @@
   .image-section img {
     max-width: 300px;
   }
-}
-
-.highlight {
-  color: rgb(71, 203, 255) Change to your desired color
 }

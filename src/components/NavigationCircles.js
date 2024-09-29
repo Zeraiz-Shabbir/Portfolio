@@ -7,6 +7,8 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
   const [expandedSection, setExpandedSection] = useState(null);
   const [isNavigating, setIsNavigating] = useState(false);
 
+  const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim();
+
   // Memoize sections array
   const sections = useMemo(() => ['landing-page', 'featured-projects', 'about-me'], []);
 
@@ -93,7 +95,7 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
             width: expandedSection === section || hoveredSection === section ? 110 : 20,
             height: expandedSection === section || hoveredSection === section ? 35 : 20,
             borderRadius: expandedSection === section || hoveredSection === section ? 15 : 50,
-            backgroundColor: 'black',
+            backgroundColor: secondaryColor,
             transition: 'all 0.2s ease',
             position: 'relative',
           }}

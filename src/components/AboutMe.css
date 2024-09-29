@@ -5,7 +5,6 @@
     align-items: center; /* Center content horizontally */
     height: 100vh; /* Full height of the viewport */
     margin: 0; /* No margins */
-    background-color: #fff; /* White background */
     scroll-snap-align: start; /* Ensure snap alignment */
   }
   
@@ -17,7 +16,6 @@
     line-height: 1.6; /* Improved readability */
     margin-bottom: 15px; /* Spacing between paragraphs */
     font-size: 1.1em; /* Slightly larger font for emphasis */
-    color: #333; /* Dark gray text for better readability */
     max-width: 800px; /* Optional: Limit width for better readability */
   }
   

@@ -2,8 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #FFFFFF !important; /* Ensure it's white and overrides other styles */
-  padding: 15px 30px;
+  padding: 15px;
   opacity: 0; /* Start hidden */
   transition: opacity 0.5s; /* Smooth transition for fading */
   position: fixed; /* Fix navbar at the top */
@@ -18,7 +17,6 @@
 
 .Navbar-title {
   margin: 0;
-  color: #000000; /* Color of Zeraiz Shabbir text */
 }
 
 .Navbar-menu {
@@ -28,18 +26,13 @@
   display: flex;
 }
 
-.Navbar li {
-  margin-left: 20px;
-}
-
 .Navbar a {
-  color: #000000; /* Dark gray for links */
   text-decoration: none; /* No underline by default */
   font-weight: bold;
   transition: text-decoration 0.3s, color 0.3s; /* Smooth transition for underline and color */
+  color: var(--secondary-color);
 }
 
-.Navbar a:hover {
-  text-decoration: underline; /* Underline on hover for clarity */
-  color: #007bff; /* Optional: Change color on hover for emphasis */
+.Navbar-menu li:last-child a {
+  margin-right: 15px; /* Adjust the right margin as needed */
 }
