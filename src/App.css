@@ -38,8 +38,6 @@ body {
 }
 
 .Navbar {
-  /* background-color: #333; */
-  /* color: white; */
   padding: 10px;
   position: fixed; /* Keep the navbar at the top */
   width: 100%; /* Full width */
@@ -56,15 +54,6 @@ body {
   margin: 0 10px;
 }
 
-.Footer {
-  background-color: #282c34;
-  color: white;
-  padding: 10px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
 .Projects {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +67,10 @@ body {
   margin: 10px;
   padding: 20px;
   width: 300px;
+}
+
+strong, b {
+  color: var(--accent-color); /* Use the accent color for bolded text */
 }
 
 * {

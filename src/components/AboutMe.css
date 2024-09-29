@@ -1,21 +1,38 @@
 .about-me-section {
-    display: flex; /* Enable Flexbox */
-    flex-direction: column; /* Column layout */
-    justify-content: center; /* Center content vertically */
-    align-items: center; /* Center content horizontally */
-    height: 100vh; /* Full height of the viewport */
-    margin: 0; /* No margins */
-    scroll-snap-align: start; /* Ensure snap alignment */
-  }
-  
-  .about-me-section h2 {
-    text-align: center;
-  }
-  
-  .about-me-section p {
-    line-height: 1.6; /* Improved readability */
-    margin-bottom: 15px; /* Spacing between paragraphs */
-    font-size: 1.1em; /* Slightly larger font for emphasis */
-    max-width: 800px; /* Optional: Limit width for better readability */
-  }
-  
+  display: flex; /* Enable Flexbox */
+  flex-direction: column; /* Column layout */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  height: 100vh; /* Full height of the viewport */
+  margin: 0; /* No margins */
+  scroll-snap-align: start; /* Ensure snap alignment */
+}
+
+.about-me-content {
+  max-width: 76%; /* Reduces the margin on the left and right */
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-me-content h2 {
+  font-size: 2rem; /* Slightly smaller heading */
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.about-me-content p {
+  font-size: 1.1rem; /* Adjusted text size */
+  line-height: 1.6; /* Slightly tighter line height */
+  margin-bottom: 15px; /* Smaller bottom margin */
+}
+
+.about-me-content a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

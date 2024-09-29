@@ -8,40 +8,35 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
   const [isNavigating, setIsNavigating] = useState(false);
 
   const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary-color').trim();
+  const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim(); // Get accent color
 
-  // Memoize sections array
   const sections = useMemo(() => ['landing-page', 'featured-projects', 'about-me'], []);
 
-  // Handle mouse enter
   const handleMouseEnter = (section) => {
-    if (!isNavigating) { // Only expand if not navigating
+    if (!isNavigating) {
       setHoveredSection(section);
       setExpandedSection(section);
     }
   };
 
-  // Handle mouse leave
   const handleMouseLeave = () => {
     setHoveredSection(null);
-    setExpandedSection(null); // Dismiss immediately on mouse leave
+    setExpandedSection(null);
   };
 
-  // Handle navigation on click
   const handleNavigation = (section) => {
-    setIsNavigating(true); // Set navigating flag
-    setExpandedSection(section); // Expand the clicked section
+    setIsNavigating(true);
+    setExpandedSection(section);
     onNavigate(section);
     setLastActiveSection(section);
 
-    // Reset state after navigation
     setHoveredSection(null);
     setTimeout(() => {
-      setExpandedSection(null); // Reset expanded section
-      setIsNavigating(false); // Reset navigating flag
-    }, 500); // Adjust this delay as needed to ensure navigation completes
+      setExpandedSection(null);
+      setIsNavigating(false);
+    }, 500);
   };
 
-  // Use an IntersectionObserver to track when sections come into view
   useEffect(() => {
     const options = {
       root: null,
@@ -51,7 +46,7 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
 
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !isNavigating) { // Only expand if not navigating
+        if (entry.isIntersecting && !isNavigating) {
           const section = entry.target.id;
           if (section !== lastActiveSection) {
             setExpandedSection(section);
@@ -74,14 +69,13 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
     };
   }, [sections, lastActiveSection, isNavigating]);
 
-  // Handle the expanded section timeout
   useEffect(() => {
     if (expandedSection) {
       const timeoutId = setTimeout(() => {
-        setExpandedSection(null); // Dismiss the expanded section
+        setExpandedSection(null);
       }, 1000);
 
-      return () => clearTimeout(timeoutId); // Clear timeout on unmount or state change
+      return () => clearTimeout(timeoutId);
     }
   }, [expandedSection]);
 
@@ -94,8 +88,8 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
           style={{
             width: expandedSection === section || hoveredSection === section ? 110 : 20,
             height: expandedSection === section || hoveredSection === section ? 35 : 20,
-            borderRadius: expandedSection === section || hoveredSection === section ? 15 : 50,
-            backgroundColor: secondaryColor,
+            borderRadius: 10, // Rounded corners for the background
+            backgroundColor: (section === activeSection) ? accentColor : secondaryColor, // Use accent color for active section
             transition: 'all 0.2s ease',
             position: 'relative',
           }}
@@ -105,8 +99,8 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
         >
           {(expandedSection === section || hoveredSection === section) && (
             <span className="tooltip">{
-              section === 'landing-page' ? 'Landing Page' :
-              section === 'featured-projects' ? 'Projects' :
+              section === 'landing-page' ? 'Overview' :
+              section === 'featured-projects' ? 'Portfolio' :
               'About Me'
             }</span>
           )}

@@ -24,7 +24,7 @@ const LandingPage = () => {
           <h1 className="greeting">Hi</h1>
           <h1 className="name">I'm <span className="highlight">Zeraiz Shabbir</span></h1> {/* Change here */}
           <p className="description">
-            an aspiring frontend developer passionate about creating intuitive and dynamic user experiences.
+          a motivated software developer dedicated to building user-friendly applications and enhancing overall user experiences.
           </p>
           <div className="social-links">
             <div className="icon-wrapper" onClick={handleEmail}>

@@ -10,12 +10,28 @@
 }
 
 .circle {
-  color: var(--secondary-color);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease; /* Smooth transition */
+  transition: all 0.1s ease-in-out; /* Faster transition */
+  position: relative;
+}
+
+.circle-background {
+  content: '';
+  position: absolute;
+  width: 0; /* Start with no width */
+  height: 0; /* Start with no height */
+  background-color: var(--secondary-color);
+  border-radius: 10px; /* Rounded corners */
+  z-index: -1; /* Keep behind the circle */
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* Faster expansion */
+}
+
+.circle:hover .circle-background {
+  width: 110px; /* Final width for the rectangle */
+  height: 35px; /* Final height for the rectangle */
 }
 
 .tooltip {
@@ -28,4 +44,5 @@
   overflow: hidden; /* Hide overflow */
   text-overflow: ellipsis; /* Add ellipsis for overflowed text */
   pointer-events: none; /* Prevent tooltip from capturing mouse events */
+  z-index: 2;
 }
