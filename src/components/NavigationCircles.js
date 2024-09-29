@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './NavigationCircles.css';
 
 const NavigationCircles = ({ onNavigate, activeSection }) => {
@@ -7,7 +7,8 @@ const NavigationCircles = ({ onNavigate, activeSection }) => {
   const [expandedSection, setExpandedSection] = useState(null);
   const [isNavigating, setIsNavigating] = useState(false);
 
-  const sections = ['landing-page', 'featured-projects', 'about-me'];
+  // Memoize sections array
+  const sections = useMemo(() => ['landing-page', 'featured-projects', 'about-me'], []);
 
   // Handle mouse enter
   const handleMouseEnter = (section) => {

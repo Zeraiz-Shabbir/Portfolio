@@ -1,5 +1,6 @@
 // src/components/Project1.js
 import React from 'react';
+
 import './ProjectStyles.css'; // Optional: Individual styles for the project
 
 const Project1 = ({ onClose }) => {

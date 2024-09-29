@@ -3,31 +3,24 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Center horizontally */
-  margin: 0 10%; /* Match the landing page margin */
+  margin: 0; /* Remove margin from the section itself */
   height: 100vh; /* Full height */
   position: relative; /* Relative positioning for absolute button placement */
   scroll-snap-align: start; /* Snap alignment for this section */
-}
-
-/* Project Section Title */
-.projects-title {
-  margin: 20px 0; /* Space from the top and bottom */
-  font-size: 24px; /* Adjust font size as needed */
-  font-weight: bold; /* Make it bold for emphasis */
-  align-self: flex-start; /* Align to the top left */
+  overflow: hidden; /* Prevent overflow from causing horizontal scroll */
 }
 
 /* Wrapper for Projects List */
 .projects-wrapper {
-  display: flex;
-  justify-content: flex-start; /* Align to the left */
-  align-items: center; /* Center projects vertically */
-  overflow-x: auto; /* Allow horizontal scrolling */
-  overflow-y: hidden; /* Hide vertical scroll */
-  width: 100%;
-  /* padding: 20px 0; Padding to space out content */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  flex: 1; /* Allow this section to grow and take available space */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 140px); /* Adjust width to leave room for increased margins */
+  padding-left: 80px; /* Increased left margin */
+  padding-right: 80px; /* Increased right margin with 21px difference */
+  height: auto; /* Adjust as needed */
+  box-sizing: border-box; /* Include padding in the element's total width */
 }
 
 /* Hide Scrollbar for Webkit Browsers */
@@ -39,9 +32,8 @@
 .projects-list {
   display: flex;
   flex-direction: row; /* Horizontal layout */
-  gap: 20px; /* Space between project items */
+  gap: 12px; /* Increase space between project items */
   min-height: 200px; /* Ensure some height for visibility */
-  /* padding-left: 10px; Slight padding to avoid project overlap */
   scroll-snap-type: x mandatory; /* Enable snap scrolling */
   scroll-snap-align: start; /* Align each project at the start */
 }
@@ -49,10 +41,9 @@
 /* Project Item (Individual Project) Styling */
 .project-item {
   background-color: transparent; /* Make background transparent */
-  width: 250px; /* Fixed width */
-  height: 350px; /* Fixed height */
-  overflow: hidden; /* Hide overflow to prevent image from affecting card size */
-  border-radius: 10px; /* Rounded corners for aesthetics */
+  width: 400px; /* Increased width */
+  height: auto; /* Set to auto to allow dynamic height based on image */
+  overflow: hidden; /* Hide overflow to prevent extra space */
   cursor: pointer; /* Pointer cursor on hover */
   position: relative; /* Relative positioning for layering */
   transition: transform 0.3s ease; /* Smooth hover */
@@ -62,9 +53,8 @@
 /* Image Styling */
 .project-image {
   width: 100%; /* Make the image take up the full width of the card */
-  height: 100%; /* Make the image take up the full height of the card */
-  object-fit: cover; /* Ensure the image covers the area without distortion */
-  border-radius: 10px; /* Rounded corners to match the card */
+  height: auto; /* Set height to auto to maintain aspect ratio */
+  object-fit: cover; /* Use cover to fill the card without distortion */
 }
 
 /* Overlay for Project Details */
@@ -79,5 +69,4 @@
   align-items: center;
   justify-content: center;
   z-index: 10; /* Ensure overlay is on top */
-  /* padding: 20px; Padding inside overlay */
 }
