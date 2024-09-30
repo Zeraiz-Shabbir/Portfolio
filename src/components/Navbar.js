@@ -1,15 +1,16 @@
 import React from 'react';
 import './Navbar.css';
+import { FaCog } from 'react-icons/fa'; // Import settings icon
 
-const Navbar = ({ isVisible, onMouseEnter, onMouseLeave }) => {
-  const handleSmoothScroll = (event, targetId) => {
-    event.preventDefault(); // Prevent the default anchor click behavior
-    const target = document.getElementById(targetId);
-    if (target) {
-      // Scroll smoothly to the target section
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  };
+const Navbar = ({ isVisible, onMouseEnter, onMouseLeave, onOpenSettings }) => {
+  // const handleSmoothScroll = (event, targetId) => {
+  //   event.preventDefault(); // Prevent the default anchor click behavior
+  //   const target = document.getElementById(targetId);
+  //   if (target) {
+  //     // Scroll smoothly to the target section
+  //     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   }
+  // };
 
   return (
     <nav 
@@ -18,28 +19,10 @@ const Navbar = ({ isVisible, onMouseEnter, onMouseLeave }) => {
       onMouseLeave={onMouseLeave}
     >
       <h2 className="Navbar-title">Zeraiz Shabbir</h2>
-      <ul className="Navbar-menu">
-        <li>
-          <a 
-            href="#featured-projects" 
-            onClick={(e) => handleSmoothScroll(e, 'featured-projects')} 
-            className="NavLink"
-          >
-            Portfolio
-          </a>
-          <div className="UnfoldingLine"></div>
-        </li>
-        <li>
-          <a 
-            href="#about-me" 
-            onClick={(e) => handleSmoothScroll(e, 'about-me')} 
-            className="NavLink"
-          >
-            About Me
-          </a>
-          <div className="UnfoldingLine"></div>
-        </li>
-      </ul>
+      <div className="icon-wrapper" onClick={onOpenSettings}>
+        <FaCog className="icon settings-button" />
+        <div className="UnfoldingLine"></div>
+      </div>
     </nav>
   );
 };

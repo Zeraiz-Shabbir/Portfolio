@@ -31,6 +31,10 @@
   margin: 0; /* Remove default margin */
 }
 
+.highlight {
+  color: var(--accent-color);
+}
+
 .description {
   font-size: 1.2em; /* Normal text size */
   margin-top: 10px; /* Space between the name and description */
@@ -50,7 +54,7 @@
 
 .social-links {
   display: flex;
-  gap: 20px; /* Increase spacing between icons */
+  gap: 0px; /* Increase spacing between icons */
 }
 
 .icon-wrapper {
@@ -90,10 +94,6 @@
   color: var(--secondary-color); /* Default icon color */
   transition: color 0.3s ease; /* Keep color change slower */
   z-index: 2; /* Ensures the icon stays on top of the growing circle */
-}
-
-.highlight {
-  color: var(--accent-color);
 }
 
 /* Bounce animation */

@@ -4,11 +4,12 @@
   align-items: center;
   padding: 15px;
   opacity: 0; /* Start hidden */
-  transition: opacity 0.5s; /* Smooth transition for fading */
+  transition: opacity 0.3s; /* Smooth transition for fading */
   position: fixed; /* Fix navbar at the top */
-  width: 90%; /* Full width */
+  width: 100%; /* Full width */
   top: 0; /* Align to the top */
   z-index: 1000; /* Ensure it appears above other elements */
+  color: var(--secondary-color);
 }
 
 .Navbar.visible {
@@ -33,6 +34,43 @@
   color: var(--secondary-color);
 }
 
-.Navbar-menu li:last-child a {
-  margin-right: 15px; /* Adjust the right margin as needed */
+.settings-button {
+  font-size: 30px; /* Match the size of the other icons */
+  color: var(--secondary-color); /* Default icon color */
+  transition: color 0.3s ease; /* Keep color change slower */
+  z-index: 2; /* Ensure the icon stays on top of the growing circle */
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1; /* Ensure the icon and its wrapper stay above the circle */
+  margin-right: 15px; /* Adjust this value to increase space from the right edge */
+  margin-top: 0px;
+}
+
+.icon-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  z-index: -1; /* Ensures the circle stays behind the icon */
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* Quicker transition */
+}
+
+.icon-wrapper:hover::before {
+  width: 60px;
+  height: 60px;
+  animation: bounce 0.5s ease forwards; /* Add bounce animation */
+}
+
+.icon-wrapper:hover .icon {
+  color: var(--primary-color); /* Change icon color to primary on hover */
 }

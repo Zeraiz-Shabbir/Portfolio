@@ -1,0 +1,122 @@
+/* Settings dialog box styles */
+.settings-dialog {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1001;
+    width: 280px;
+    max-width: 90%;
+}
+
+.settings-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* General theme option styles */
+.theme-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 15px; /* More circular borders */
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+/* Borders for each theme */
+.theme-option[data-theme="Classic"] {
+    border: 2px solid #333333; /* Classic theme secondary color */
+}
+
+.theme-option[data-theme="Cool Blue"] {
+    border: 2px solid #005F73; /* Cool Blue theme secondary color */
+}
+
+.theme-option[data-theme="Fresh Greens"] {
+    border: 2px solid #5A6D35; /* Fresh Greens theme secondary color */
+}
+
+.theme-option[data-theme="Desert Sand"] {
+    border: 2px solid #4E3B31; /* Desert Sand theme secondary color */
+}
+
+.theme-option[data-theme="Urban Twilight"] {
+    border: 2px solid #ECF0F1; /* Urban Twilight theme secondary color */
+}
+
+/* Scale up on hover */
+.theme-option:hover {
+    transform: scale(1.08); /* Noticeable scaling for hover */
+}
+
+/* Selected theme styling */
+.theme-option.selected {
+    transform: scale(1.12); /* More noticeable scaling for the selected theme */
+}
+
+/* Theme option structure */
+.theme-preview {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px; /* More circular */
+    margin-right: 10px;
+}
+
+.theme-name {
+    flex: 1;
+}
+
+.theme-colors {
+    display: flex;
+    gap: 5px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px; /* Rounded edges for color boxes */
+}
+
+/* Dialog buttons styling */
+.dialog-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Icon wrapper with hover effect */
+.icon-wrapper {
+    font-size: 30px;
+    color: var(--secondary-color);
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    transition: color 0.3s ease;
+}
+
+.icon-wrapper:hover {
+    color: var(--primary-color);
+}
+
+/* Settings backdrop */
+.settings-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
