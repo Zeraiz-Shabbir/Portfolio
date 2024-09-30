@@ -25,6 +25,7 @@
   padding: 0;
   margin: 0;
   display: flex;
+  align-items: center; /* Align icons vertically */
 }
 
 .Navbar a {
@@ -32,13 +33,6 @@
   font-weight: bold;
   transition: text-decoration 0.3s, color 0.3s; /* Smooth transition for underline and color */
   color: var(--secondary-color);
-}
-
-.settings-button {
-  font-size: 30px; /* Match the size of the other icons */
-  color: var(--secondary-color); /* Default icon color */
-  transition: color 0.3s ease; /* Keep color change slower */
-  z-index: 2; /* Ensure the icon stays on top of the growing circle */
 }
 
 .icon-wrapper {
@@ -50,8 +44,19 @@
   justify-content: center;
   cursor: pointer;
   z-index: 1; /* Ensure the icon and its wrapper stay above the circle */
-  margin-right: 15px; /* Adjust this value to increase space from the right edge */
-  margin-top: 0px;
+  margin-right: 10px; /* Adjust space between icons */
+}
+
+/* Remove margin-right from the last icon to prevent extra space */
+.icon-wrapper:last-child {
+  margin-right: 5px; /* No space after the last icon */
+}
+
+.settings-button {
+  font-size: 30px; /* Match the size of the other icons */
+  color: var(--secondary-color); /* Default icon color */
+  transition: color 0.3s ease; /* Keep color change slower */
+  z-index: 2; /* Ensure the icon stays on top of the growing circle */
 }
 
 .icon-wrapper::before {
@@ -73,4 +78,17 @@
 
 .icon-wrapper:hover .icon {
   color: var(--primary-color); /* Change icon color to primary on hover */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Scale up slightly */
+  }
+  100% {
+    transform: scale(1); /* Return to original size */
+  }
 }

@@ -54,18 +54,25 @@
 
 .social-links {
   display: flex;
-  gap: 0px; /* Increase spacing between icons */
+  justify-content: flex-start; /* Aligns icons to the left */
+  gap: 0px; /* Reduce spacing between icons (adjust as needed) */
 }
 
 .icon-wrapper {
   position: relative;
-  width: 60px;
+  width: 60px; /* Keep the original size of the wrapper */
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 1; /* Ensure the icon and its wrapper stay above the circle */
+  margin: -5px;
+}
+
+/* Apply negative margin to the first icon */
+.icon-wrapper:first-child {
+  margin-left: -25px; /* Adjust this value to move it further left */
 }
 
 .icon-wrapper::before {
@@ -76,13 +83,13 @@
   background-color: var(--secondary-color);
   border-radius: 50%;
   z-index: -1; /* Ensures the circle stays behind the icon */
-  transition: width 0.1s ease-in-out, height 0.1s ease-in-out; /* Quicker transition */
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
 .icon-wrapper:hover::before {
-  width: 60px;
+  width: 60px; /* Keep the size for hover effect */
   height: 60px;
-  animation: bounce 0.5s ease forwards; /* Add bounce animation */
+  animation: bounce 0.5s ease forwards;
 }
 
 .icon-wrapper:hover .icon {
@@ -90,9 +97,9 @@
 }
 
 .icon {
-  font-size: 30px;
+  font-size: 35px; /* Keep the icon size */
   color: var(--secondary-color); /* Default icon color */
-  transition: color 0.3s ease; /* Keep color change slower */
+  transition: color 0.3s ease;
   z-index: 2; /* Ensures the icon stays on top of the growing circle */
 }
 

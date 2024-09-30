@@ -25,6 +25,32 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+
+    <!-- Immediately apply the saved theme on page load -->
+    <script>
+      (function() {
+        const getCookie = (name) => {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+        };
+
+        const savedTheme = getCookie('theme') || 'Default';
+        const themeColors = {
+          Default: { primaryColor: '#F8F8F8', secondaryColor: '#333333', accentColor: '#FF6F61' },
+          'Cool Blue': { primaryColor: '#A9D6E5', secondaryColor: '#005F73', accentColor: '#0A9396' },
+          'Fresh Greens': { primaryColor: '#D4E6C2', secondaryColor: '#5A6D35', accentColor: '#A65E2E' },
+          'Desert Sand': { primaryColor: '#E4CFC4', secondaryColor: '#4E3B31', accentColor: '#C65D3B' },
+          'Urban Twilight': { primaryColor: '#2C3E50', secondaryColor: '#ECF0F1', accentColor: '#E74C3C' },
+        };
+
+        const { primaryColor, secondaryColor, accentColor } = themeColors[savedTheme] || themeColors['Default'];
+        
+        document.documentElement.style.setProperty('--primary-color', primaryColor);
+        document.documentElement.style.setProperty('--secondary-color', secondaryColor);
+        document.documentElement.style.setProperty('--accent-color', accentColor);
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

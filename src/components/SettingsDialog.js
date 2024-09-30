@@ -37,7 +37,7 @@ const themes = [
 ];
 
 const SettingsDialog = ({ onClose, onChangeTheme }) => {
-  const [selectedTheme, setSelectedTheme] = useState(themes[0]);
+  const [selectedTheme, setSelectedTheme] = useState(null); // Initialize with null
 
   useEffect(() => {
     const savedTheme = document.cookie.split('; ').find(row => row.startsWith('theme='));
@@ -47,7 +47,8 @@ const SettingsDialog = ({ onClose, onChangeTheme }) => {
       setSelectedTheme(theme);
       updateTheme(theme); // Update theme immediately after setting
     } else {
-      updateTheme(themes[0]); // Set default theme if no cookie found
+      setSelectedTheme(themes[0]); // Set default theme if no cookie found
+      updateTheme(themes[0]);
     }
   }, []);
 
@@ -62,10 +63,17 @@ const SettingsDialog = ({ onClose, onChangeTheme }) => {
   };
 
   const handleConfirm = () => {
-    onChangeTheme(selectedTheme.name); // Call the passed function to change the theme
-    updateTheme(selectedTheme); // Update the CSS variables here
+    if (selectedTheme) {
+      onChangeTheme(selectedTheme.name); // Call the passed function to change the theme
+      updateTheme(selectedTheme); // Update the CSS variables here
+    }
     onClose(); // Close the dialog after confirming
   };
+
+  // If selectedTheme is null (not initialized), show a loading state
+  if (!selectedTheme) {
+    return null; // Prevent any UI from rendering until the theme is loaded
+  }
 
   return (
     <>

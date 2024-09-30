@@ -14,7 +14,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition: all 0.1s ease-in-out; /* Faster transition */
+  transition: all 0.3s ease-in-out; /* Faster transition */
   position: relative;
 }
 
