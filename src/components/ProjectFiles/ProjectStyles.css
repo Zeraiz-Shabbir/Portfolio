@@ -29,3 +29,59 @@
 body.no-scroll {
   overflow: hidden;
 }
+
+/* Back Button Styles */
+.back-button-wrapper {
+  position: absolute;
+  top: 40px;
+  left: 130px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  margin: -5px;
+}
+
+.back-button-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  z-index: -1; /* Ensures the circle stays behind the icon */
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+
+.back-button-wrapper:hover::before {
+  width: 60px;
+  height: 60px;
+  animation: bounce 0.5s ease forwards;
+}
+
+.back-button-icon {
+  font-size: 32px; /* Keep the icon size */
+  color: var(--secondary-color); /* Default icon color */
+  transition: color 0.3s ease;
+  z-index: 2; /* Ensures the icon stays on top of the growing circle */
+}
+
+.back-button-wrapper:hover .back-button-icon {
+  color: var(--primary-color); /* Change icon color on hover */
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1); /* Scale up slightly */
+  }
+  100% {
+    transform: scale(1); /* Return to original size */
+  }
+}

@@ -92,8 +92,24 @@
 /* Dialog buttons styling */
 .dialog-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensure equal spacing */
     width: 100%;
+    padding: 0 20px; /* Add padding to the sides */
+    margin-top: 20px; /* Add some space above the buttons */
+}
+
+/* General icon button style */
+.dialog-buttons .icon-wrapper {
+    cursor: pointer; /* Pointer cursor for buttons */
+}
+
+/* Adjust margins for icon buttons */
+.dialog-buttons .cancel-icon {
+    flex-grow: 0.5; /* This pushes the cancel icon to the left */
+}
+
+.dialog-buttons .confirm-icon {
+    margin-left: 20px; /* Maintain a specific margin for the right button */
 }
 
 /* Icon wrapper with hover effect */

@@ -38,6 +38,13 @@
   scroll-snap-align: start; /* Align each project at the start */
 }
 
+/* Image Styling */
+.project-image {
+  width: 100%; /* Make the image take up the full width of the card */
+  height: auto; /* Set height to auto to maintain aspect ratio */
+  object-fit: cover; /* Use cover to fill the card without distortion */
+}
+
 /* Project Item (Individual Project) Styling */
 .project-item {
   background-color: transparent; /* Make background transparent */
@@ -48,13 +55,6 @@
   position: relative; /* Relative positioning for layering */
   transition: transform 0.3s ease; /* Smooth hover */
   scroll-snap-align: center; /* Center alignment for snap effect */
-}
-
-/* Image Styling */
-.project-image {
-  width: 100%; /* Make the image take up the full width of the card */
-  height: auto; /* Set height to auto to maintain aspect ratio */
-  object-fit: cover; /* Use cover to fill the card without distortion */
 }
 
 /* Overlay for Project Details */
@@ -69,4 +69,30 @@
   align-items: center;
   justify-content: center;
   z-index: 10; /* Ensure overlay is on top */
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(0); /* Original position */
+  }
+  100% {
+    transform: translateY(-100vh); /* Move out of view */
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100vh); /* Start from above */
+  }
+  100% {
+    transform: translateY(0); /* Original position */
+  }
+}
+
+.project-item.sliding-up {
+  animation: slideUp 0.5s forwards; /* Trigger upward animation */
+}
+
+.project-item.sliding-down {
+  animation: slideDown 0.5s forwards; /* Trigger downward animation */
 }
