@@ -1,19 +1,5 @@
 /* src/components/ProjectStyles.css */
 
-/* Ensure the project page fully takes up the screen with a white background */
-.project-page {
-  color: white; /* Solid white background */
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  position: fixed; /* Fix it to the viewport */
-  top: 0;
-  left: 0;
-  z-index: 9999; /* Ensure it's above other content */
-  display: flex; /* Flex layout */
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
-}
-
 /* Back button styles */
 .back-button {
   position: absolute;
@@ -23,6 +9,7 @@
   cursor: pointer;
   font-size: 32px; /* Large size for the arrow */
   color: black; /* Arrow color */
+  z-index: 50;
 }
 
 /* Disable arrow key navigation while on the project page */

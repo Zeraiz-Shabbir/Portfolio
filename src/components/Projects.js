@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Projects.css'; // Style for the projects
 import tiny_task_portfolio from '../assets/tiny_task_portfolio.png';
 import budget_buddy_portfolio from '../assets/budget_buddy_portfolio.png';
@@ -22,66 +22,109 @@ const Projects = ({ onOpenProject }) => {
 
   const [animationClass, setAnimationClass] = useState(Array(projects.length).fill(''));
   const [selectedProject, setSelectedProject] = useState(null);
-  const [translateY, setTranslateY] = useState([0, 0, 0, 0, 0]);
-  const projectsRef = useRef(null);
+  const [translateY, setTranslateY] = useState(Array(projects.length).fill(0));
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [slideUp, setSlideUp] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [visibility, setVisibility] = useState(Array(projects.length).fill(true));
+  const [hoverIndex, setHoverIndex] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null); // New state variable for selected index
 
   const handleMouseEnter = (index) => {
-    setTranslateY(prev => {
-      const newTranslateY = [...prev];
-      newTranslateY[index] = -50; // Move the card up
-      return newTranslateY;
-    });
+    if (!isAnimating) {
+      setHoverIndex(index);
+      setTranslateY(prev => {
+        const newTranslateY = [...prev];
+        newTranslateY[index] = -10;
+        return newTranslateY;
+      });
+    }
   };
 
   const handleMouseLeave = (index) => {
-    setTranslateY(prev => {
-      const newTranslateY = [...prev];
-      newTranslateY[index] = 0; // Reset the card's position
-      return newTranslateY;
-    });
+    if (!isAnimating) {
+      setHoverIndex(prev => (prev === index ? null : prev));
+      setTranslateY(prev => {
+        const newTranslateY = [...prev];
+        newTranslateY[index] = 0;
+        return newTranslateY;
+      });
+    }
   };
 
-  const handleProjectClick = (component, index) => {
-    // Set animation class for the clicked card
+  const handleProjectClick = (component, index, image) => {
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : '')));
-    setSelectedProject(component);
-    onOpenProject(true);
+    setTimeout(() => {
+      setSelectedProject(component);
+      setSelectedImage(image);
+      setIsVisible(true);
+      setSlideUp(false);
+      setSelectedIndex(index);
+      onOpenProject(true);
+    }, 350);
   };
 
   const handleBackButtonClick = (index) => {
-    // Dismiss project screen and reset animation for the clicked card only
-    setSelectedProject(null);
-    setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-down' : ''))); // Apply downward animation
-    onOpenProject(false);
+    setSlideUp(true); // Start the slide-up animation for the image
+    setAnimationClass(prev => prev.map((cls, i) => (i === index ? '' : cls)));
+    setIsAnimating(true);
+    setVisibility(prev => {
+      const newVisibility = [...prev];
+      newVisibility[index] = false;
+      return newVisibility;
+    });
 
-    // Reset the animation class for the card after it slides down
+    // Allow the slide-up animation to complete before continuing
     setTimeout(() => {
-      setAnimationClass(prev => prev.map((cls, i) => (i === index ? '' : cls))); // Clear animation class for hovered functionality
-    }, 300); // Adjust the timing according to your sliding-down duration
+      setIsVisible(false);
+      setSelectedProject(null);
+
+      // Delay the sliding down animation until after the image has slid up
+      setTimeout(() => {
+        setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-down' : cls)));
+
+        setTimeout(() => {
+          setTranslateY(prev => {
+            const newTranslateY = [...prev];
+            newTranslateY[index] = 0; 
+            return newTranslateY;
+          });
+          setVisibility(prev => {
+            const newVisibility = [...prev];
+            newVisibility[index] = true; 
+            return newVisibility;
+          });
+          setIsAnimating(false);
+        }, 10);
+      }, 10); // Delay for the slide-up animation duration
+      onOpenProject(false);
+    }, 350); // This should match the duration of the slide-up animation
   };
 
   useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = ''; // Allow scrolling
+      document.body.style.overflow = '';
       onOpenProject(false);
     }
   }, [selectedProject, onOpenProject]);
 
   return (
     <section id="featured-projects" className="projects-section" data-scroll-section>
-      <div className="projects-wrapper" ref={projectsRef}>
+      <div className="projects-wrapper">
         <div className="projects-list">
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className={`project-item ${animationClass[index]}`} 
+              className={`project-item ${animationClass[index]} ${hoverIndex === index || selectedIndex === index ? 'hovered' : ''}`} 
               onMouseEnter={() => handleMouseEnter(index)} 
               onMouseLeave={() => handleMouseLeave(index)} 
-              onClick={() => handleProjectClick(project.component, index)}
+              onClick={() => handleProjectClick(project.component, index, project.image)} 
               style={{ 
-                transform: `translateY(${translateY[index]}px) scale(${translateY[index] < 0 ? 1.12 : 1})`,
+                visibility: visibility[index] ? 'visible' : 'hidden', 
+                transform: `translateY(${translateY[index]}px) scale(${hoverIndex === index ? 1.05 : 1})`,
                 transition: 'transform 0.3s ease' 
               }}
             >
@@ -95,6 +138,20 @@ const Projects = ({ onOpenProject }) => {
         <div className="project-details-overlay">
           {selectedProject}
         </div>
+      )}
+
+      {selectedProject && selectedImage && isVisible && (
+        <img 
+          src={selectedImage} 
+          alt="Project Preview" 
+          className={`project-image-slide ${slideUp ? 'project-image-slide-up' : ''}`}
+          style={{
+            position: 'absolute',
+            top: '100px', // Adjust positioning as needed
+            left: 'calc(40px + 5%)', // Keep consistent margins
+            zIndex: 20 // Ensure it sits above the overlay
+          }}
+        />
       )}
     </section>
   );
