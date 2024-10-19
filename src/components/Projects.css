@@ -30,24 +30,23 @@
 
 /* Project card styling */
 .project-item {
-  width: 300px; /* Reduced the width for more compact cards */
   height: auto;
   cursor: pointer;
   position: relative;
-  transition: transform 0.3s ease, visibility 0s 0.5s;
   scroll-snap-align: center; /* Center alignment for snap effect */
+}
+
+/* Hover effect for project cards */
+.project-image:hover {
+  transform: translateY(-15px) scale(1.07); /* Slightly lift and scale up */
 }
 
 /* Image styling */
 .project-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-}
-
-/* Hover effect */
-.project-item.hovered {
-  transform: translateY(-10px) scale(1); /* Set to normal size */
+  transition: transform 0.3s ease;
 }
 
 /* Slide up and down animations */

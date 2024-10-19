@@ -5,11 +5,13 @@ import budget_buddy_portfolio from '../assets/budget_buddy_portfolio.png';
 import cyberbullying_portfolio from '../assets/cyberbullying_portfolio.png';
 import meal_match_portfolio from '../assets/meal_match_portfolio.png';
 import personal_portfolio from '../assets/personal_portfolio.png';
+import react_portfolio from '../assets/react_portfolio.png';
 import Project1 from './ProjectFiles/Project1';
 import Project2 from './ProjectFiles/Project2';
 import Project3 from './ProjectFiles/Project3';
 import Project4 from './ProjectFiles/Project4';
 import Project5 from './ProjectFiles/Project5';
+import Project6 from './ProjectFiles/Project6';
 
 const Projects = ({ onOpenProject }) => {
   const projects = [
@@ -18,6 +20,7 @@ const Projects = ({ onOpenProject }) => {
     { image: cyberbullying_portfolio, component: <Project3 onClose={() => handleBackButtonClick(2)} /> },
     { image: meal_match_portfolio, component: <Project4 onClose={() => handleBackButtonClick(3)} /> },
     { image: personal_portfolio, component: <Project5 onClose={() => handleBackButtonClick(4)} /> },
+    { image: react_portfolio, component: <Project6 onClose={() => handleBackButtonClick(5)} /> },
   ];
 
   const [animationClass, setAnimationClass] = useState(Array(projects.length).fill(''));
@@ -26,41 +29,16 @@ const Projects = ({ onOpenProject }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
   const [visibility, setVisibility] = useState(Array(projects.length).fill(true));
-  const [hoverIndex, setHoverIndex] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null); // New state variable for selected index
-
-  const handleMouseEnter = (index) => {
-    if (!isAnimating) {
-      setHoverIndex(index);
-      setTranslateY(prev => {
-        const newTranslateY = [...prev];
-        newTranslateY[index] = -10;
-        return newTranslateY;
-      });
-    }
-  };
-
-  const handleMouseLeave = (index) => {
-    if (!isAnimating) {
-      setHoverIndex(prev => (prev === index ? null : prev));
-      setTranslateY(prev => {
-        const newTranslateY = [...prev];
-        newTranslateY[index] = 0;
-        return newTranslateY;
-      });
-    }
-  };
 
   const handleProjectClick = (component, index, image) => {
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : '')));
+
     setTimeout(() => {
       setSelectedProject(component);
       setSelectedImage(image);
       setIsVisible(true);
       setSlideUp(false);
-      setSelectedIndex(index);
       onOpenProject(true);
     }, 350);
   };
@@ -68,7 +46,6 @@ const Projects = ({ onOpenProject }) => {
   const handleBackButtonClick = (index) => {
     setSlideUp(true); // Start the slide-up animation for the image
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? '' : cls)));
-    setIsAnimating(true);
     setVisibility(prev => {
       const newVisibility = [...prev];
       newVisibility[index] = false;
@@ -95,7 +72,6 @@ const Projects = ({ onOpenProject }) => {
             newVisibility[index] = true; 
             return newVisibility;
           });
-          setIsAnimating(false);
         }, 10);
       }, 10); // Delay for the slide-up animation duration
       onOpenProject(false);
@@ -118,13 +94,11 @@ const Projects = ({ onOpenProject }) => {
           {projects.map((project, index) => (
             <div 
               key={index} 
-              className={`project-item ${animationClass[index]} ${hoverIndex === index || selectedIndex === index ? 'hovered' : ''}`} 
-              onMouseEnter={() => handleMouseEnter(index)} 
-              onMouseLeave={() => handleMouseLeave(index)} 
+              className={`project-item ${animationClass[index]}`} 
               onClick={() => handleProjectClick(project.component, index, project.image)} 
               style={{ 
                 visibility: visibility[index] ? 'visible' : 'hidden', 
-                transform: `translateY(${translateY[index]}px) scale(${hoverIndex === index ? 1.05 : 1})`,
+                transform: `translateY(${translateY[index]}px)`,
                 transition: 'transform 0.3s ease' 
               }}
             >

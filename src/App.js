@@ -12,7 +12,7 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('landing-page'); 
   const [isProjectOpen, setIsProjectOpen] = useState(false); 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false); 
-  const scrollRef = useRef(null); 
+  const scrollRef = useRef(null);
   const sectionsRef = useRef({}); 
 
   // Function to get a cookie value

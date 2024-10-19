@@ -8,7 +8,7 @@ const Project5 = ({ onClose }) => {
       <div className="back-button-wrapper" onClick={onClose}>
         <FaArrowLeft className="back-button-icon" />
       </div>
-      <h2>Project Placeholder</h2>
+      <h2>Project Portfolio</h2>
     </div>
   );
 };
