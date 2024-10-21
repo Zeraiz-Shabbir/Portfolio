@@ -20,7 +20,7 @@ const Navbar = ({ isVisible, onMouseEnter, onMouseLeave, onOpenSettings }) => {
     >
       <h2 className="Navbar-title">Zeraiz Shabbir</h2>
       <div className="icon-wrapper" onClick={onOpenSettings}>
-        <FaCog className="icon settings-button" />
+        <FaCog className="cog settings-button" />
         <div className="UnfoldingLine"></div>
       </div>
     </nav>

@@ -92,13 +92,18 @@
 
 /* Project image slide-in animation */
 .project-image-slide {
-  position: absolute; /* Position the image absolutely within the overlay */
-  left: calc(40px + 5%); /* Keep consistent margins */
-  transform: translateX(-50%);
-  width: 22%; /* Set width as desired */
-  height: auto; /* Maintain aspect ratio */
+  position: relative;
   animation: imageSlideDown 0.5s forwards; /* Add slide down animation */
-  z-index: 20; /* Ensure it sits above the overlay */
+  left: 18%;
+}
+
+.image-details {
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.image-details:hover {
+  transform: scale(1.05);
 }
 
 /* Slide down animation for the image */
@@ -123,4 +128,21 @@
   100% {
     transform: translateY(-100vh); /* Slide out of view */
   }
+}
+
+/* Animation classes */
+.slide-in-right {
+  animation: slideInRight 0.5s forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.5s forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s forwards;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.5s forwards;
 }

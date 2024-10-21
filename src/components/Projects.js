@@ -15,12 +15,36 @@ import Project6 from './ProjectFiles/Project6';
 
 const Projects = ({ onOpenProject }) => {
   const projects = [
-    { image: tiny_task_portfolio, component: <Project1 onClose={() => handleBackButtonClick(0)} /> },
-    { image: budget_buddy_portfolio, component: <Project2 onClose={() => handleBackButtonClick(1)} /> },
-    { image: cyberbullying_portfolio, component: <Project3 onClose={() => handleBackButtonClick(2)} /> },
-    { image: meal_match_portfolio, component: <Project4 onClose={() => handleBackButtonClick(3)} /> },
-    { image: personal_portfolio, component: <Project5 onClose={() => handleBackButtonClick(4)} /> },
-    { image: react_portfolio, component: <Project6 onClose={() => handleBackButtonClick(5)} /> },
+    {
+      component: <Project1 onClose={() => handleBackButtonClick(0)} />,
+      image: tiny_task_portfolio,
+      url: 'https://github.com/CSC-4351-FL2024-Tuesday/SP2024Team10',
+    },
+    {
+      component: <Project2 onClose={() => handleBackButtonClick(1)} />,
+      image: budget_buddy_portfolio,
+      url: 'https://github.com/Zeraiz-Shabbir/BudgetPlanner',
+    },
+    {
+      component: <Project3 onClose={() => handleBackButtonClick(2)} />,
+      image: cyberbullying_portfolio,
+      url: 'https://github.com/Zeraiz-Shabbir/CyberbullyingDetectionModel',
+    },
+    {
+      component: <Project4 onClose={() => handleBackButtonClick(3)} />,
+      image: meal_match_portfolio,
+      url: 'https://github.com/Zeraiz-Shabbir/MealProject',
+    },
+    {
+      component: <Project5 onClose={() => handleBackButtonClick(4)} />,
+      image: personal_portfolio,
+      url: 'https://github.com/Zeraiz-Shabbir/WP_Portfolio',
+    },
+    {
+      component: <Project6 onClose={() => handleBackButtonClick(5)} />,
+      image: react_portfolio,
+      url: 'https://github.com/Zeraiz-Shabbir/Portfolio',
+    }
   ];
 
   const [animationClass, setAnimationClass] = useState(Array(projects.length).fill(''));
@@ -30,6 +54,7 @@ const Projects = ({ onOpenProject }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
   const [visibility, setVisibility] = useState(Array(projects.length).fill(true));
+  const [selectedIndex, setSelectedIndex] = useState(null); // New state for selected index
 
   const handleProjectClick = (component, index, image) => {
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : '')));
@@ -37,6 +62,7 @@ const Projects = ({ onOpenProject }) => {
     setTimeout(() => {
       setSelectedProject(component);
       setSelectedImage(image);
+      setSelectedIndex(index); // Set the selected index
       setIsVisible(true);
       setSlideUp(false);
       onOpenProject(true);
@@ -56,6 +82,7 @@ const Projects = ({ onOpenProject }) => {
     setTimeout(() => {
       setIsVisible(false);
       setSelectedProject(null);
+      setSelectedIndex(null); // Reset the selected index
 
       // Delay the sliding down animation until after the image has slid up
       setTimeout(() => {
@@ -114,18 +141,32 @@ const Projects = ({ onOpenProject }) => {
         </div>
       )}
 
-      {selectedProject && selectedImage && isVisible && (
-        <img 
-          src={selectedImage} 
-          alt="Project Preview" 
-          className={`project-image-slide ${slideUp ? 'project-image-slide-up' : ''}`}
-          style={{
-            position: 'absolute',
-            top: '100px', // Adjust positioning as needed
-            left: 'calc(40px + 5%)', // Keep consistent margins
-            zIndex: 20 // Ensure it sits above the overlay
-          }}
-        />
+      {selectedProject && selectedImage && isVisible && selectedIndex !== null && (
+        <div style={{ position: 'absolute', top: '18%', left: '12%', zIndex: 20 }}>
+          <div className="image-details">
+            <a 
+              href={projects[selectedIndex].url} // Use the URL from the projects array
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <img 
+                src={selectedImage} 
+                alt="Project Preview" 
+                className={`project-image-slide ${slideUp ? 'project-image-slide-up' : ''}`}
+                style={{
+                  width: '250px', // Adjust size as needed
+                  height: 'auto',
+                }}
+              />
+            </a>
+          </div>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: '10px'
+          }}>
+          </div>
+        </div>
       )}
     </section>
   );

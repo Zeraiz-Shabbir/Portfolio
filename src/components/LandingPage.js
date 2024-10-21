@@ -1,6 +1,6 @@
 import React from 'react';
 import './LandingPage.css';
-import profilePic from '../assets/headshot.jpeg';
+import profilePic from '../assets/cali_pic.jpg';
 // Importing FontAwesome icons
 import { FaEnvelope, FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'; // Import the resume icon
 
@@ -34,16 +34,16 @@ const LandingPage = () => {
           </p>
           <div className="social-links">
             <div className="icon-wrapper" onClick={handleEmail}>
-              <FaEnvelope className="icon" />
+              <FaEnvelope className="landing_icon" />
             </div>
             <div className="icon-wrapper" onClick={handleGitHub}>
-              <FaGithub className="icon" />
+              <FaGithub className="landing_icon" />
             </div>
             <div className="icon-wrapper" onClick={handleLinkedIn}>
-              <FaLinkedin className="icon" />
+              <FaLinkedin className="landing_icon" />
             </div>
             <div className="icon-wrapper" onClick={handleResume}> {/* Add resume icon here */}
-              <FaFileAlt className="icon" />
+              <FaFileAlt className="landing_icon" />
             </div>
           </div>
         </div>

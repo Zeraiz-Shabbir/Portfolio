@@ -1,14 +1,12 @@
-/* src/components/ProjectStyles.css */
-
 /* Back button styles */
 .back-button {
   position: absolute;
   top: 40px;
   left: 130px;
-  background-color: white; /* No background */
+  background-color: white;
   cursor: pointer;
-  font-size: 32px; /* Large size for the arrow */
-  color: black; /* Arrow color */
+  font-size: 32px;
+  color: black;
   z-index: 50;
 }
 
@@ -17,19 +15,44 @@ body.no-scroll {
   overflow: hidden;
 }
 
-/* Back Button Styles */
+/* Back button wrapper */
 .back-button-wrapper {
   position: absolute;
-  top: 40px;
-  left: 130px;
-  width: 60px;
-  height: 60px;
+  top: 12%;
+  left: 17%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 1;
   margin: -5px;
+  transition: top 0.5s ease-in-out;
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(-100vh); /* Slide in from above */
+  }
+  100% {
+    transform: translateY(0); /* Element back in original position */
+  }
+}
+
+@keyframes slideOutTop {
+  0% {
+    transform: translateY(0); /* Element in its original position */
+  }
+  100% {
+    transform: translateY(-100vh); /* Slide out back up */
+  }
+}
+
+.slide-in-top {
+  animation: slideInTop 0.5s ease-in-out;
+}
+
+.slide-out-top {
+  animation: slideOutTop 0.4s ease-in-out;
 }
 
 .back-button-wrapper::before {
@@ -39,7 +62,7 @@ body.no-scroll {
   height: 0;
   background-color: var(--secondary-color);
   border-radius: 50%;
-  z-index: -1; /* Ensures the circle stays behind the icon */
+  z-index: -1;
   transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
 }
 
@@ -50,25 +73,133 @@ body.no-scroll {
 }
 
 .back-button-icon {
-  font-size: 32px; /* Keep the icon size */
-  color: var(--secondary-color); /* Default icon color */
+  font-size: 32px;
+  color: var(--secondary-color);
   transition: color 0.3s ease;
-  z-index: 2; /* Ensures the icon stays on top of the growing circle */
+  z-index: 2;
 }
 
 .back-button-wrapper:hover .back-button-icon {
-  color: var(--primary-color); /* Change icon color on hover */
+  color: var(--primary-color);
 }
 
-/* Bounce animation */
+/* Bounce animation for the back button */
 @keyframes bounce {
   0% {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.1); /* Scale up slightly */
+    transform: scale(1.1);
   }
   100% {
-    transform: scale(1); /* Return to original size */
+    transform: scale(1);
   }
+}
+
+.project-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 15px; /* Increased margin for spacing */
+  transition: transform 0.2s ease-in-out;
+}
+
+.project-icon-wrapper:hover {
+  transform: scale(1.1); /* Only scale the icon */
+}
+
+/* Label styles */
+.label {
+  position: absolute;
+  top: 50px; /* Position it below the icon */
+  left: 50%;
+  transform: translateX(-50%) scale(0.9); /* Center the label and scale down */
+  opacity: 0; /* Hidden initially */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.project-icon-wrapper:hover .label {
+  opacity: 1; /* Fade in */
+  transform: translateX(-50%) scale(1); /* Scale to normal size */
+}
+
+.icon {
+  fill: var(--secondary-color); /* Icon color */
+  transition: transform 0.2s ease; /* Add a slight transformation */
+}
+
+/* Slide in from the right */
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100vw); /* Start off-screen to the right */
+  }
+  100% {
+    transform: translateX(0vw); /* Slide into position */
+  }
+}
+
+/* Slide out to the right */
+@keyframes slideOutRight {
+  0% {
+    transform: translateX(0vw); /* Start from the current position */
+  }
+  100% {
+    transform: translateX(100vw); /* Move off-screen to the right */
+  }
+}
+
+/* Slide in from the left */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-100vw); /* Start off-screen to the left */
+  }
+  100% {
+    transform: translateX(0vw); /* Slide into position */
+  }
+}
+
+/* Slide out to the left */
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0vw); /* Start from the current position */
+  }
+  100% {
+    transform: translateX(-100vw); /* Move off-screen to the left */
+  }
+}
+
+.project-title {
+  color: var(--accent-color);
+  position: absolute;
+  display: flex;
+  text-align: left;
+  top: 19%;
+  left: 38%;
+  right: 15%;
+}
+
+.project-description {
+  position: absolute;
+  display: flex;
+  text-align: left;
+  top: 26%;
+  left: 38%;
+  right: 15%;
+}
+
+.tools-header {
+  position: absolute;
+  display: flex;
+  align-self: auto;
+  top: 75%;
+  left: 17%;
+}
+
+.icon-container {
+  position: absolute;
+  display: flex;
+  align-self: auto;
+  top: 82%;
+  left: 16%;
 }

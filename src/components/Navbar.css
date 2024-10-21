@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
   opacity: 0; /* Start hidden */
   transition: opacity 0.3s; /* Smooth transition for fading */
   position: fixed; /* Fix navbar at the top */
@@ -49,7 +49,7 @@
 
 /* Remove margin-right from the last icon to prevent extra space */
 .icon-wrapper:last-child {
-  margin-right: 5px; /* No space after the last icon */
+  margin-right: 1%; /* No space after the last icon */
 }
 
 .settings-button {
@@ -76,7 +76,7 @@
   animation: bounce 0.5s ease forwards; /* Add bounce animation */
 }
 
-.icon-wrapper:hover .icon {
+.icon-wrapper:hover .cog {
   color: var(--primary-color); /* Change icon color to primary on hover */
 }
 
