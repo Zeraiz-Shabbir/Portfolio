@@ -5,9 +5,7 @@
   align-items: center;
   height: 100vh;
   position: relative;
-  overflow: hidden;
   scroll-snap-align: start;
-  background-color: transparent; /* No background here, we will use the overlay */
 }
 
 /* Wrapper for Projects List */
@@ -16,24 +14,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%; /* Adjusted to make it more compact */
+  margin-top: -50vh;
+  width: 60%; /* Adjusted to make it more compact */
 }
 
 /* Projects List with snap scroll behavior */
 .projects-list {
   display: flex;
   flex-direction: row;
-  gap: 12px; /* Maintain space between items */
   min-height: 200px;
   scroll-snap-type: x mandatory;
-}
-
-/* Project card styling */
-.project-item {
-  height: auto;
-  cursor: pointer;
-  position: relative;
-  scroll-snap-align: center; /* Center alignment for snap effect */
 }
 
 /* Hover effect for project cards */
@@ -145,4 +135,17 @@
 
 .slide-out-left {
   animation: slideOutLeft 0.5s forwards;
+}
+
+/* Adjust margin between images */
+.project-item {
+  flex: 0 0 calc((100% / 3)); /* Adjusted to take one-third minus margins */
+  height: auto;
+  cursor: pointer;
+  position: relative;
+  scroll-snap-align: center; /* Center alignment for snap effect */
+}
+
+.custom-slick-list .slick-list, .slick-arrow {
+  padding: 100vh 0 0;
 }

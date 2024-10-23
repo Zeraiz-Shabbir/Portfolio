@@ -58,9 +58,9 @@ const Project6 = ({ onClose }) => {
   
       {/* Tools section wrapper for easier styling */}
       <div className="tools-container">
-        <h3 className={`tools-header ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`}>
+        <h5 className={`tools-header ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`}>
           Tools and Technologies Used:
-        </h3>
+        </h5>
         <div className={`icon-container ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`} style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '10px' }}>
           {icons.map(({ IconComponent, label }, index) => (
             <div className="project-icon-wrapper" key={index}>

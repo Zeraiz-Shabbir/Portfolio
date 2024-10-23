@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import './Projects.css'; // Style for the projects
 import tiny_task_portfolio from '../assets/tiny_task_portfolio.png';
 import budget_buddy_portfolio from '../assets/budget_buddy_portfolio.png';
@@ -55,6 +59,56 @@ const Projects = ({ onOpenProject }) => {
   const [slideUp, setSlideUp] = useState(false);
   const [visibility, setVisibility] = useState(Array(projects.length).fill(true));
   const [selectedIndex, setSelectedIndex] = useState(null); // New state for selected index
+
+  // Custom Arrow Components for the carousel
+  const NextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <FaArrowRight
+        className={className}
+        style={{ ...style, display: "block", color: "var(--secondary--color)", fontSize: "24px" }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const PrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <FaArrowLeft
+        className={className}
+        style={{ ...style, display: "block", color: "var(--secondary--color)", fontSize: "24px" }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 3, // Show 3 slides at a time
+    slidesToScroll: 1, // Scroll one slide at a time
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        }
+      }
+    ],
+    className: 'custom-slick-list'
+  };
 
   const handleProjectClick = (component, index, image) => {
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : '')));
@@ -117,7 +171,7 @@ const Projects = ({ onOpenProject }) => {
   return (
     <section id="featured-projects" className="projects-section" data-scroll-section>
       <div className="projects-wrapper">
-        <div className="projects-list">
+        <Slider {...settings}>
           {projects.map((project, index) => (
             <div 
               key={index} 
@@ -126,21 +180,22 @@ const Projects = ({ onOpenProject }) => {
               style={{ 
                 visibility: visibility[index] ? 'visible' : 'hidden', 
                 transform: `translateY(${translateY[index]}px)`,
-                transition: 'transform 0.3s ease' 
+                transition: 'transform 0.3s ease',
+                margin: '0 12px', // Add margin between images
               }}
             >
               <img src={project.image} alt={`Project ${index + 1}`} className="project-image" />
             </div>
           ))}
-        </div>
+        </Slider>
       </div>
-
+  
       {selectedProject && (
         <div className="project-details-overlay">
           {selectedProject}
         </div>
       )}
-
+  
       {selectedProject && selectedImage && isVisible && selectedIndex !== null && (
         <div style={{ position: 'absolute', top: '18%', left: '12%', zIndex: 20 }}>
           <div className="image-details">
@@ -160,16 +215,11 @@ const Projects = ({ onOpenProject }) => {
               />
             </a>
           </div>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: '10px'
-          }}>
-          </div>
         </div>
       )}
     </section>
   );
+
 };
 
 export default Projects;
