@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import NextButton from './NextButton'; // Path to your NextButton component
+import PrevButton from './PrevButton'; // Path to your PrevButton component
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -53,35 +54,30 @@ const Projects = ({ onOpenProject }) => {
 
   const [animationClass, setAnimationClass] = useState(Array(projects.length).fill(''));
   const [selectedProject, setSelectedProject] = useState(null);
-  const [translateY, setTranslateY] = useState(Array(projects.length).fill(0));
   const [selectedImage, setSelectedImage] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
   const [visibility, setVisibility] = useState(Array(projects.length).fill(true));
   const [selectedIndex, setSelectedIndex] = useState(null); // New state for selected index
+  const [currentSlide, setCurrentSlide] = useState(0); // New state for current slide
 
-  // Custom Arrow Components for the carousel
-  const NextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <FaArrowRight
-        className={className}
-        style={{ ...style, display: "block", color: "var(--secondary--color)", fontSize: "24px" }}
-        onClick={onClick}
-      />
-    );
-  };
+  const NextArrow = ({ onClick }) => (
+    <NextButton
+      onClick={onClick}
+      style={{
+        display: currentSlide < projects.length - 3 ? 'block' : 'none', // Show only if not on last slide
+      }}
+    />
+  );
 
-  const PrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <FaArrowLeft
-        className={className}
-        style={{ ...style, display: "block", color: "var(--secondary--color)", fontSize: "24px" }}
-        onClick={onClick}
-      />
-    );
-  };
+  const PrevArrow = ({ onClick }) => (
+    <PrevButton
+      onClick={onClick}
+      style={{
+        display: currentSlide > 0 ? 'block' : 'none', // Show only if not on first slide
+      }}
+    />
+  );
 
   const settings = {
     dots: true,
@@ -91,6 +87,7 @@ const Projects = ({ onOpenProject }) => {
     slidesToScroll: 1, // Scroll one slide at a time
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
+    afterChange: (current) => setCurrentSlide(current), // Update current slide index
     responsive: [
       {
         breakpoint: 1024,
@@ -112,7 +109,6 @@ const Projects = ({ onOpenProject }) => {
 
   const handleProjectClick = (component, index, image) => {
     setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : '')));
-
     setTimeout(() => {
       setSelectedProject(component);
       setSelectedImage(image);
@@ -125,39 +121,36 @@ const Projects = ({ onOpenProject }) => {
 
   const handleBackButtonClick = (index) => {
     setSlideUp(true); // Start the slide-up animation for the image
-    setAnimationClass(prev => prev.map((cls, i) => (i === index ? '' : cls)));
+
     setVisibility(prev => {
       const newVisibility = [...prev];
-      newVisibility[index] = false;
+      newVisibility[index] = false; // Hide right away
       return newVisibility;
-    });
+  });
+
+
+    // Set animation class for sliding up
+    setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-up' : cls)));
 
     // Allow the slide-up animation to complete before continuing
     setTimeout(() => {
-      setIsVisible(false);
-      setSelectedProject(null);
-      setSelectedIndex(null); // Reset the selected index
+        setIsVisible(false);
+        setSelectedProject(null);
+        setSelectedIndex(null); // Reset the selected index
 
-      // Delay the sliding down animation until after the image has slid up
-      setTimeout(() => {
-        setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-down' : cls)));
-
+        // Delay the sliding down animation until after the image has slid up
         setTimeout(() => {
-          setTranslateY(prev => {
-            const newTranslateY = [...prev];
-            newTranslateY[index] = 0; 
-            return newTranslateY;
-          });
-          setVisibility(prev => {
-            const newVisibility = [...prev];
-            newVisibility[index] = true; 
-            return newVisibility;
-          });
-        }, 10);
-      }, 10); // Delay for the slide-up animation duration
-      onOpenProject(false);
+            setAnimationClass(prev => prev.map((cls, i) => (i === index ? 'sliding-down' : cls)));
+            // Reset visibility after the slide-down animation if needed
+            setVisibility(prev => {
+                const newVisibility = [...prev];
+                newVisibility[index] = true; // Ensure visibility is reset after animation
+                return newVisibility;
+            });
+        }, 10); // Delay for the slide-up animation duration
     }, 350); // This should match the duration of the slide-up animation
-  };
+};
+
 
   useEffect(() => {
     if (selectedProject) {
@@ -179,12 +172,11 @@ const Projects = ({ onOpenProject }) => {
               onClick={() => handleProjectClick(project.component, index, project.image)} 
               style={{ 
                 visibility: visibility[index] ? 'visible' : 'hidden', 
-                transform: `translateY(${translateY[index]}px)`,
                 transition: 'transform 0.3s ease',
                 margin: '0 12px', // Add margin between images
               }}
             >
-              <img src={project.image} alt={`Project ${index + 1}`} className="project-image" />
+              <img src={project.image} alt={`Project ${index + 1}`} className="project-image" tabIndex="-1" />
             </div>
           ))}
         </Slider>
@@ -197,7 +189,7 @@ const Projects = ({ onOpenProject }) => {
       )}
   
       {selectedProject && selectedImage && isVisible && selectedIndex !== null && (
-        <div style={{ position: 'absolute', top: '18%', left: '12%', zIndex: 20 }}>
+        <div style={{ position: 'absolute', top: '18%', left: '12%', zIndex: 10 }}>
           <div className="image-details">
             <a 
               href={projects[selectedIndex].url} // Use the URL from the projects array
@@ -209,8 +201,9 @@ const Projects = ({ onOpenProject }) => {
                 alt="Project Preview" 
                 className={`project-image-slide ${slideUp ? 'project-image-slide-up' : ''}`}
                 style={{
-                  width: '250px', // Adjust size as needed
-                  height: 'auto',
+                  width: '290px', // Adjust width to fit your design
+                  left: '14%',
+                  top: '-20px',
                 }}
               />
             </a>
@@ -219,7 +212,6 @@ const Projects = ({ onOpenProject }) => {
       )}
     </section>
   );
-
 };
 
 export default Projects;

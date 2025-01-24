@@ -4,36 +4,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
 const themes = [
-  {
-    name: 'Classic',
-    primaryColor: '#F8F8F8',
-    secondaryColor: '#333333',
-    accentColor: '#FF6F61',
-  },
-  {
-    name: 'Cool Blue',
-    primaryColor: '#A9D6E5',
-    secondaryColor: '#005F73',
-    accentColor: '#0A9396',
-  },
-  {
-    name: 'Fresh Greens',
-    primaryColor: '#D4E6C2',
-    secondaryColor: '#5A6D35',
-    accentColor: '#A65E2E',
-  },
-  {
-    name: 'Desert Sand',
-    primaryColor: '#E4CFC4',
-    secondaryColor: '#4E3B31',
-    accentColor: '#C65D3B',
-  },
-  {
-    name: 'Urban Twilight',
-    primaryColor: '#2C3E50',
-    secondaryColor: '#ECF0F1',
-    accentColor: '#E74C3C',
-  },
+  { name: 'Classic', primaryColor: '#F8F8F8', secondaryColor: '#333333', accentColor: '#FF6F61' },
+  { name: 'Evening Dusk', primaryColor: '#2C3E50', secondaryColor: '#ECF0F1', accentColor: '#E74C3C' },
+  { name: 'Coastal Mist', primaryColor: '#E3EEF3', secondaryColor: '#34495E', accentColor: '#2A9D8F' },
+  { name: 'Warm Stone', primaryColor: '#E5D4C0', secondaryColor: '#4A4031', accentColor: '#D2691E' },
+  { name: 'Soft Dawn', primaryColor: '#FFF9E6', secondaryColor: '#3A3A3A', accentColor: '#88B04B' },
 ];
 
 const SettingsDialog = ({ onClose, onChangeTheme }) => {

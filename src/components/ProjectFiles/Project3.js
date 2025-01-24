@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectStyles.css'; // Optional: Individual styles for the project
-import { FaArrowLeft } from 'react-icons/fa'; // FontAwesome back arrow icon
+import BackButton from '../BackButton';
 
 // Import icons related to the project as React components
 import { ReactComponent as SparkIcon } from '../../assets/cyberbullying/apachespark.svg';
@@ -13,18 +13,21 @@ const Project3 = ({ onClose }) => {
   const [slideTitle, setSlideTitle] = useState(false);
   const [slideIcons, setSlideIcons] = useState(false);
   const [slideBackButton, setSlideBackButton] = useState(false);
+  const [slideDescription, setSlideDescription] = useState(false);
 
   useEffect(() => {
     // Trigger animations on mount
     setSlideTitle(true);
     setSlideIcons(true);
     setSlideBackButton(true);
+    setSlideDescription(true);
     
     return () => {
       // Reset animations on unmount
       setSlideTitle(false);
       setSlideIcons(false);
       setSlideBackButton(false);
+      setSlideDescription(false);
     };
   }, []);
 
@@ -40,23 +43,30 @@ const Project3 = ({ onClose }) => {
     setSlideTitle(false);
     setSlideIcons(false);
     setSlideBackButton(false);
+    setSlideDescription(false);
     onClose();
   };
 
   return (
     <div className="project-container">
-      <div className={`back-button-wrapper ${slideBackButton ? 'slide-in-top' : 'slide-out-top'}`} onClick={handleBackButtonClick}>
-        <FaArrowLeft className="back-button-icon" />
-      </div>
+      <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         Cyberbullying Detection Model
       </h2>
-      <p className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        ML Model capable of classifying tweets into six different categories.
-      </p>
-  
-      {/* Tools section wrapper for easier styling */}
+
+      <div className={`project-description ${slideDescription ? 'slide-in-right' : 'slide-out-right'}`}>
+        <p>
+          This project focuses on developing a machine learning model to detect cyberbullying in tweets. It leverages a Kaggle dataset containing over 47,000 labeled tweets across six categories, including gender, race, religion, and others. Using cloud-based infrastructure with Apache Spark, the project processes the data through steps like tokenization, sentiment analysis, and n-gram generation to prepare it for model training.
+        </p>
+        <p>
+          Initially, a multinomial logistic regression model was used, but after facing performance issues, the project shifted to a binary classification approach using logistic regression. The most accurate results were achieved with a Naïve Bayes algorithm, reaching 70.82% accuracy. Additionally, visualizations of unigrams and bigrams from the dataset were created to explore trends in cyberbullying language, revealing significant patterns related to gender, race, and religious harassment.
+        </p>
+        <p>
+          This project demonstrates an effective approach to identifying and understanding online harassment, offering valuable insights for future interventions.
+        </p>
+      </div>
+
       <div className="tools-container">
         <h5 className={`tools-header ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`}>
           Tools and Technologies
@@ -64,10 +74,7 @@ const Project3 = ({ onClose }) => {
         <div className={`icon-container ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`} style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '10px' }}>
           {icons.map(({ IconComponent, label }, index) => (
             <div className="project-icon-wrapper" key={index}>
-              <IconComponent 
-                className="icon" 
-                style={{ width: '40px', height: '40px' }} 
-              />
+              <IconComponent className="icon" style={{ width: '40px', height: '40px' }} />
               <div className="label">{label}</div>
             </div>
           ))}

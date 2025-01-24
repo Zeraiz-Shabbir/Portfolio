@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectStyles.css'; // Optional: Individual styles for the project
-import { FaArrowLeft } from 'react-icons/fa'; // FontAwesome back arrow icon
+import BackButton from '../BackButton';
 
 // Import icons related to the project as React components
 import { ReactComponent as JavascriptIcon } from '../../assets/portfolio/javascript.svg';
@@ -47,9 +47,7 @@ const Project5 = ({ onClose }) => {
 
   return (
     <div className="project-container">
-      <div className={`back-button-wrapper ${slideBackButton ? 'slide-in-top' : 'slide-out-top'}`} onClick={handleBackButtonClick}>
-        <FaArrowLeft className="back-button-icon" />
-      </div>
+      <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         Personal Portfolio

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './ProjectStyles.css'; // Optional: Individual styles for the project
-import { FaArrowLeft } from 'react-icons/fa'; // FontAwesome back arrow icon
+import './ProjectStyles.css';
+import BackButton from '../BackButton';
 
 // Import icons related to the project as React components
 import { ReactComponent as JavaIcon } from '../../assets/budget_buddy/java.svg';
@@ -16,18 +16,21 @@ const Project2 = ({ onClose }) => {
   const [slideTitle, setSlideTitle] = useState(false);
   const [slideIcons, setSlideIcons] = useState(false);
   const [slideBackButton, setSlideBackButton] = useState(false);
+  const [slideDescription, setSlideDescription] = useState(false);
 
   useEffect(() => {
     // Trigger animations on mount
     setSlideTitle(true);
     setSlideIcons(true);
     setSlideBackButton(true);
-    
+    setSlideDescription(true);
+
     return () => {
       // Reset animations on unmount
       setSlideTitle(false);
       setSlideIcons(false);
       setSlideBackButton(false);
+      setSlideDescription(false);
     };
   }, []);
 
@@ -39,41 +42,48 @@ const Project2 = ({ onClose }) => {
     { IconComponent: JunitIcon, label: 'JUnit 5' },
     { IconComponent: MaterialDesignIcon, label: 'Material Design' },
     { IconComponent: GradleIcon, label: 'Gradle' },
-    { IconComponent: GithubIcon, label: 'GitHub' }
+    { IconComponent: GithubIcon, label: 'GitHub' },
   ];
 
   const handleBackButtonClick = () => {
     setSlideTitle(false);
     setSlideIcons(false);
     setSlideBackButton(false);
+    setSlideDescription(false);
     onClose();
   };
 
   return (
     <div className="project-container">
-      <div className={`back-button-wrapper ${slideBackButton ? 'slide-in-top' : 'slide-out-top'}`} onClick={handleBackButtonClick}>
-        <FaArrowLeft className="back-button-icon" />
-      </div>
+      <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Budget Buddy
+        BudgetPlanner
       </h2>
-      <p className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Simple financial tracking app for daily income and expense with an option of budgeting.
-      </p>
-  
-      {/* Tools section wrapper for easier styling */}
+
+      <div className={`project-description ${slideDescription ? 'slide-in-right' : 'slide-out-right'}`}>
+        <p>
+          BudgetPlanner is a mobile app designed to simplify expense and income tracking, providing users with a clean and intuitive way to manage their finances. It features personalized forms for data entry, monthly budgeting limits, and savings tracking, all powered by a robust SQLite database and back-end implementation.
+        </p>
+        <p>
+          Developed by a team of three during a Fall 2024 Mobile App Development course, the project followed a structured workflow. Sprint 1 focused on planning and design, including front-end and back-end setup, while Sprint 2 implemented core features such as login/registration, budget tracking, and expense manipulation. Testing was conducted to ensure smooth functionality on Android Studio emulators.
+        </p>
+        <p>
+          Version control and collaboration were managed through GitHub, with thorough peer reviews to maintain code quality. BudgetPlanner is an example of efficient teamwork and practical application of mobile development skills.
+        </p>
+      </div>
+
       <div className="tools-container">
         <h5 className={`tools-header ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`}>
           Tools and Technologies
         </h5>
         <div className={`icon-container ${slideIcons ? 'slide-in-left' : 'slide-out-left'}`} style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '10px' }}>
           {icons.map(({ IconComponent, label }, index) => (
-            <div className="project-icon-wrapper" key={index}>
-              <IconComponent 
-                className="icon" 
-                style={{ width: '40px', height: '40px' }} 
-              />
+            <div
+              className="project-icon-wrapper"
+              key={index}
+            >
+              <IconComponent className="icon" style={{ width: '40px', height: '40px' }} />
               <div className="label">{label}</div>
             </div>
           ))}

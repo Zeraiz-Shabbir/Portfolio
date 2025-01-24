@@ -23,7 +23,6 @@
   display: flex;
   flex-direction: row;
   min-height: 200px;
-  scroll-snap-type: x mandatory;
 }
 
 /* Hover effect for project cards */
@@ -84,16 +83,16 @@
 .project-image-slide {
   position: relative;
   animation: imageSlideDown 0.5s forwards; /* Add slide down animation */
-  left: 18%;
 }
 
 .image-details {
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  outline: none;
 }
 
 .image-details:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 /* Slide down animation for the image */
@@ -143,9 +142,40 @@
   height: auto;
   cursor: pointer;
   position: relative;
-  scroll-snap-align: center; /* Center alignment for snap effect */
+  outline: none;
 }
 
 .custom-slick-list .slick-list, .slick-arrow {
   padding: 100vh 0 0;
+}
+
+.custom-arrow {
+  color: var(--secondary--color);
+  z-index: 20;
+  cursor: pointer;
+}
+
+.custom-arrow:hover {
+  color: var(--accent-color);
+}
+
+/* Inactive dots */
+.slick-dots li {
+  width: 10px; /* Width of each dot */
+  height: 10px; /* Height of each dot */
+  margin: 0 5px; /* Space between dots */
+}
+
+/* Set inactive dot color */
+.slick-dots li button:before {
+  color: var(--secondary-color); /* Use secondary color for inactive dots */
+  font-size: small; /* Size of the dot */
+  line-height: 10px; /* Align the dots properly */
+  opacity: 1; /* Ensure full visibility */
+}
+
+/* Active dot */
+.slick-dots li.slick-active button:before {
+  color: var(--accent-color); /* Use accent color for active dot */
+  opacity: 1
 }

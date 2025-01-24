@@ -1,3 +1,4 @@
+/* Landing page container */
 .landing-page {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   scroll-snap-align: start;
 }
 
+/* Content wrapper */
 .content-wrapper {
   display: flex;
   align-items: center;
@@ -15,6 +17,7 @@
   width: 100%;
 }
 
+/* Text section styles */
 .text-section {
   flex: 1;
   text-align: left;
@@ -32,7 +35,7 @@
 }
 
 .highlight {
-  color: var(--accent-color);
+  color: var(--accent-color); /* Color for highlighted text */
 }
 
 .description {
@@ -40,6 +43,7 @@
   margin-top: 10px; /* Space between the name and description */
 }
 
+/* Image section */
 .image-section {
   flex: 1;
   display: flex;
@@ -52,29 +56,32 @@
   height: auto;
 }
 
+/* Social media icons */
 .social-links {
   display: flex;
   justify-content: flex-start; /* Aligns icons to the left */
   gap: 0px; /* Reduce spacing between icons (adjust as needed) */
 }
 
+/* Wrapper for icons */
 .icon-wrapper {
   position: relative;
-  width: 60px; /* Keep the original size of the wrapper */
+  width: 60px; 
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 1; /* Ensure the icon and its wrapper stay above the circle */
+  z-index: 1; 
   margin: -5px;
 }
 
-/* Apply negative margin to the first icon */
+/* Negative margin to pull the first icon slightly left */
 .icon-wrapper:first-child {
-  margin-left: -25px; /* Adjust this value to move it further left */
+  margin-left: -25px; 
 }
 
+/* Circle expansion animation */
 .icon-wrapper::before {
   content: '';
   position: absolute;
@@ -82,28 +89,20 @@
   height: 0;
   background-color: var(--secondary-color);
   border-radius: 50%;
-  z-index: -1; /* Ensures the circle stays behind the icon */
-  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+  z-index: -1; 
+  transition: width 0.2s ease-in-out, height 0.2s ease-in-out, opacity 0.2s ease; /* Transition for size and opacity */
+  opacity: 0; /* Start circle invisible */
 }
 
+/* When the icon is hovered */
 .icon-wrapper:hover::before {
-  width: 60px; /* Keep the size for hover effect */
+  width: 60px; /* Circle expands to full size */
   height: 60px;
-  animation: bounce 0.5s ease forwards;
+  opacity: 1; /* Circle becomes visible */
+  animation: bounce 0.5s ease forwards; /* Bounce animation for smooth effect */
 }
 
-.icon-wrapper:hover .icon {
-  color: var(--primary-color); /* Change icon color to white on hover */
-}
-
-.landing-icon {
-  font-size: 35px; /* Keep the icon size */
-  color: var(--secondary-color); /* Default icon color */
-  transition: color 0.3s ease;
-  z-index: 2; /* Ensures the icon stays on top of the growing circle */
-}
-
-/* Bounce animation */
+/* Bounce keyframes for expanding animation */
 @keyframes bounce {
   0% {
     transform: scale(1);
@@ -112,7 +111,33 @@
     transform: scale(1.1); /* Scale up slightly */
   }
   100% {
-    transform: scale(1); /* Return to original size */
+    transform: scale(1);
+  }
+}
+
+/* Icon styling */
+.landing-icon {
+  font-size: 35px;
+  color: var(--secondary-color); /* Default icon color */
+  transition: color 0.2s ease; /* Sync icon color transition with the circle's expansion */
+  z-index: 2;
+}
+
+/* Icon color change as the circle expands */
+.icon-wrapper:hover .landing-icon {
+  animation: colorFill 0.2s ease forwards; /* Trigger color animation as circle expands */
+}
+
+/* Keyframes for the color fill animation */
+@keyframes colorFill {
+  0% {
+    color: var(--secondary-color); /* Initial color */
+  }
+  50% {
+    color: var(--intermediate-color); /* Optional intermediate step for smoother effect */
+  }
+  100% {
+    color: var(--primary-color); /* Final color after expansion */
   }
 }
 

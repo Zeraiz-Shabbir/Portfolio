@@ -1,32 +1,6 @@
-/* Back button styles */
-.back-button {
-  position: absolute;
-  top: 40px;
-  left: 130px;
-  background-color: white;
-  cursor: pointer;
-  font-size: 32px;
-  color: black;
-  z-index: 50;
-}
-
 /* Disable arrow key navigation while on the project page */
 body.no-scroll {
   overflow: hidden;
-}
-
-/* Back button wrapper */
-.back-button-wrapper {
-  position: absolute;
-  top: 12%;
-  left: 17%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1;
-  margin: -5px;
-  transition: top 0.5s ease-in-out;
 }
 
 @keyframes slideInTop {
@@ -55,34 +29,6 @@ body.no-scroll {
   animation: slideOutTop 0.4s ease-in-out;
 }
 
-.back-button-wrapper::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  background-color: var(--secondary-color);
-  border-radius: 50%;
-  z-index: -1;
-  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
-}
-
-.back-button-wrapper:hover::before {
-  width: 60px;
-  height: 60px;
-  animation: bounce 0.5s ease forwards;
-}
-
-.back-button-icon {
-  font-size: 32px;
-  color: var(--secondary-color);
-  transition: color 0.3s ease;
-  z-index: 2;
-}
-
-.back-button-wrapper:hover .back-button-icon {
-  color: var(--primary-color);
-}
-
 /* Bounce animation for the back button */
 @keyframes bounce {
   0% {
@@ -107,6 +53,29 @@ body.no-scroll {
 
 .project-icon-wrapper:hover {
   transform: scale(1.1); /* Only scale the icon */
+}
+
+/* Overlay styling for icon information */
+/* Overlay styling for icon information */
+.overlay {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%);
+  background: white; /* Background color */
+  color: black; /* Text color */
+  padding: 20px; /* Padding for content */
+  width: auto; /* Allow width to adjust */
+  height: auto; /* Allow height to adjust */
+  padding-bottom: 143.3%; /* Maintain aspect ratio of 629:902 */
+  border-radius: 30px; /* Rounded corners */
+  z-index: 20; /* Ensure it's above other elements */
+  transition: opacity 0.3s ease; /* Smooth transition */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Optional: shadow for depth */
+  display: flex; /* Use flexbox for centering content */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  overflow: hidden; /* Hide overflow if necessary */
 }
 
 /* Label styles */
@@ -174,8 +143,8 @@ body.no-scroll {
   position: absolute;
   display: flex;
   text-align: left;
-  top: 19%;
-  left: 38%;
+  top: 18%;
+  left: 37.75%;
   right: 15%;
 }
 
@@ -186,6 +155,18 @@ body.no-scroll {
   top: 26%;
   left: 38%;
   right: 15%;
+  flex-direction: column; /* Stack elements vertically */
+}
+
+/* Reduce gap for individual sections inside the description */
+.project-description h3 {
+  margin-top: 8px; /* Decrease as needed */
+  margin-bottom: 4px; /* Decrease as needed */
+}
+
+.project-description p {
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 .tools-header {
@@ -202,4 +183,8 @@ body.no-scroll {
   align-self: auto;
   top: 82%;
   left: 16%;
+}
+
+.overlay {
+  z-index: 25;
 }

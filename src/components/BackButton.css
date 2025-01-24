@@ -1,0 +1,53 @@
+/* BackButton.css */
+.back-button {
+    position: absolute;
+    top: 40px; /* Default position; you can override this */
+    left: 130px; /* Default position; you can override this */
+    background-color: white;
+    cursor: pointer;
+    font-size: 32px;
+    color: black;
+    z-index: 50;
+}
+
+    /* Back button wrapper */
+.back-button-wrapper {
+    position: absolute;
+    top: 11%;
+    left: 17%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+    margin: -5px;
+    transition: top 0.5s ease-in-out;
+}
+
+.back-button-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    z-index: -1;
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.back-button-wrapper:hover::before {
+    width: 60px;
+    height: 60px;
+    animation: bounce 0.5s ease forwards;
+}
+
+.back-button-icon {
+    font-size: 32px;
+    color: var(--secondary-color);
+    transition: color 0.2s ease;
+    z-index: 2;
+}
+
+.back-button-wrapper:hover .back-button-icon {
+    color: var(--primary-color);
+}

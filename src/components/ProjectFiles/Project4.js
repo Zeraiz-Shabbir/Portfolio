@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ProjectStyles.css'; // Optional: Individual styles for the project
-import { FaArrowLeft } from 'react-icons/fa'; // FontAwesome back arrow icon
+import BackButton from '../BackButton';
 
 // Import icons related to the project as React components
 import { ReactComponent as KotlinIcon } from '../../assets/meal_match/kotlin.svg';
@@ -47,16 +47,24 @@ const Project4 = ({ onClose }) => {
 
   return (
     <div className="project-container">
-      <div className={`back-button-wrapper ${slideBackButton ? 'slide-in-top' : 'slide-out-top'}`} onClick={handleBackButtonClick}>
-        <FaArrowLeft className="back-button-icon" />
-      </div>
+      <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         Meal Match
       </h2>
-      <p className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Intuitive meal-planning app designed to help people choose recipes to make based on ingredients on hand.
-      </p>
+      <div className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
+        <p>
+          Meal Match is an intuitive meal-planning Android app designed to assist users in choosing recipes based on the ingredients they have at home. Developed during the Summer 2023 semester as part of the Programming Language Concepts class, the app was built using Java and Android Studio.
+        </p>
+
+        <p>
+          This project marked my first foray into Android app development. It involved learning key concepts like app architecture, UI/UX design, and how to manage application states effectively. The app utilizes Kotlin for the user interface, XML for layout and design, and Android Studio as the primary IDE for development. I also gained practical experience working with APIs to retrieve recipe data and display it within the app.
+        </p>
+
+        <p>
+          During the development process, I had the opportunity to optimize the Android emulator, ensuring smooth performance during testing. Additionally, I worked in a team of three, which enhanced my skills in collaboration and communication, especially when managing tasks such as debugging, UI design, and implementing core features.
+        </p>
+      </div>
   
       {/* Tools section wrapper for easier styling */}
       <div className="tools-container">
