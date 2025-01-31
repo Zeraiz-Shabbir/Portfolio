@@ -52,9 +52,19 @@ const Project5 = ({ onClose }) => {
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         Personal Portfolio
       </h2>
-      <p className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Initial portfolio website focused on functionality.
-      </p>
+      <div className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
+        <p>
+          Personal Portfolio WP is a WordPress-based website designed to showcase my projects and skills. Built using WordPress, phpMyAdmin, and a variety of plugins, this site features a custom search functionality powered by Ajax, which dynamically updates the page without refreshing when searching for a project.
+        </p>
+
+        <p>
+          The site utilizes plugins like Elementor for page layout, Contact Form 7 for communication, and Profile Builder for user registration and login management. I also created the custom Search Optimizer plugin, which enhances the search experience by providing real-time feedback on project queries.
+        </p>
+
+        <p>
+          I deployed the website on AWS using an EC2 instance, gaining valuable experience in server management, database handling via phpMyAdmin, and WordPress plugin development. This project allowed me to enhance my skills in JavaScript, PHP, and server-side management while creating a professional portfolio to help further my career.
+        </p>
+      </div>
   
       {/* Tools section wrapper for easier styling */}
       <div className="tools-container">

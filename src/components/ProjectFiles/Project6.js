@@ -50,9 +50,19 @@ const Project6 = ({ onClose }) => {
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         Code Portfolio
       </h2>
-      <p className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Updated portfolio website focused on interactivity, reactivity, and fluidity.
+      <div className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
+      <p>
+        This portfolio project is built using JavaScript, CSS, HTML, and React to showcase my skills and projects in a dynamic and user-friendly manner. The website is designed to highlight my work, with an emphasis on clean code, responsive design, and interactive features.
       </p>
+
+      <p>
+        React is used to build a seamless, component-based structure, while CSS and HTML are used for styling and layout. GitHub is leveraged for version control as well as the actual hosting of the site, and the ability to track and manage changes throughout the development process.
+      </p>
+
+      <p>
+        This portfolio not only serves as a showcase for my technical abilities but also provides me with an opportunity to demonstrate best practices in web development, including component reuse, state management, and modern JavaScript workflows.
+      </p>
+    </div>
   
       {/* Tools section wrapper for easier styling */}
       <div className="tools-container">
