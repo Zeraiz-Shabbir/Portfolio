@@ -58,18 +58,18 @@ const Project2 = ({ onClose }) => {
       <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        BudgetPlanner
+        Budget Buddy
       </h2>
 
       <div className={`project-description ${slideDescription ? 'slide-in-right' : 'slide-out-right'}`}>
         <p>
-          BudgetPlanner is a mobile app designed to simplify expense and income tracking, providing users with a clean and intuitive way to manage their finances. It features personalized forms for data entry, monthly budgeting limits, and savings tracking, all powered by a robust SQLite database and back-end implementation.
+          Budget Buddy is a mobile app designed to simplify expense and income tracking, providing users with a clean and intuitive way to manage their finances. It features personalized forms for data entry, monthly budgeting limits, and savings tracking, all powered by a robust SQLite database and back-end implementation.
         </p>
         <p>
           Developed by a team of three during a Fall 2024 Mobile App Development course, the project followed a structured workflow. Sprint 1 focused on planning and design, including front-end and back-end setup, while Sprint 2 implemented core features such as login/registration, budget tracking, and expense manipulation. Testing was conducted to ensure smooth functionality on Android Studio emulators.
         </p>
         <p>
-          Version control and collaboration were managed through GitHub, with thorough peer reviews to maintain code quality. BudgetPlanner is an example of efficient teamwork and practical application of mobile development skills.
+          Version control and collaboration were managed through GitHub, with thorough peer reviews to maintain code quality. Budget Buddy is an example of efficient teamwork and practical application of mobile development skills.
         </p>
       </div>
 

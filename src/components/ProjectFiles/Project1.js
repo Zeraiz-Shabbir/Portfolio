@@ -57,7 +57,7 @@ const Project1 = ({ onClose }) => {
       
       <div className={`project-description ${slideDescription ? 'slide-in-right' : 'slide-out-right'}`}>
         <p>
-          TinyTask is a productivity app developed during a Spring 2024 Software Engineering course to simplify task management. It features a clean, user-friendly interface for organizing recurring and one-time tasks, with dynamic filtering based on user preferences. Built using Dart, Flutter, and Firebase, the app emphasizes efficiency and accessibility.
+          Tiny Task is a productivity app developed during a Spring 2024 Software Engineering course to simplify task management. It features a clean, user-friendly interface for organizing recurring and one-time tasks, with dynamic filtering based on user preferences. Built using Dart, Flutter, and Firebase, the app emphasizes efficiency and accessibility.
         </p>
         <p>
           The project, developed by a team of five, followed Agile methodologies with work divided into sprints. Sprint 1 focused on planning and design, including wireframes, UML use cases, system design, front-end design, and back-end setup. Sprint 2 implemented core features such as login/registration, task manipulation, and task viewing. Testing was conducted on both emulators and physical devices to ensure seamless performance.
