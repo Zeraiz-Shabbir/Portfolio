@@ -60,7 +60,7 @@ const Project6 = ({ onClose }) => {
       </p>
 
       <p>
-        This portfolio not only serves as a showcase for my technical abilities but also provides me with an opportunity to demonstrate best practices in web development, including component reuse, state management, and modern JavaScript workflows.
+        This portfolio was designed as an iteration from my previous portfolio (Project Portfolio) and was built completely from scratch instead of with a mix of custom built and prebuilt WordPress components. It serves as both a showcase for my technical skills and an opportunity to highlight my creativity and commitment to clean, efficient design.
       </p>
     </div>
   

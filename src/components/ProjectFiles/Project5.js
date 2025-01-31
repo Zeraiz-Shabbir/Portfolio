@@ -50,11 +50,11 @@ const Project5 = ({ onClose }) => {
       <BackButton onClick={handleBackButtonClick} slideAnimation={slideBackButton} />
 
       <h2 className={`project-title ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
-        Personal Portfolio
+        Project Portfolio
       </h2>
       <div className={`project-description ${slideTitle ? 'slide-in-right' : 'slide-out-right'}`}>
         <p>
-          Personal Portfolio WP is a WordPress-based website designed to showcase my projects and skills. Built using WordPress, phpMyAdmin, and a variety of plugins, this site features a custom search functionality powered by Ajax, which dynamically updates the page without refreshing when searching for a project.
+          Project Portfolio is a WordPress-based website designed to showcase my projects and skills. Built using WordPress, phpMyAdmin, and a variety of plugins, this site features a custom search functionality powered by Ajax, which dynamically updates the page without refreshing when searching for a project.
         </p>
 
         <p>
