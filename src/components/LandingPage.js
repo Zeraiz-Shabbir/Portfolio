@@ -19,7 +19,7 @@ const LandingPage = () => {
 
   const handleResume = () => {
     const link = document.createElement('a');
-    link.href = '/Updated-Resume-2024.pdf'; // Update with the path to your resume file
+    link.href = `${process.env.PUBLIC_URL}/Updated-Resume-2024.pdf`; // Update with the path to your resume file
     link.download = 'Zeraiz_Shabbir_Resume.pdf'; // Name the downloaded file
     link.click();
   };
